@@ -2,6 +2,8 @@
 
 Alfred workflow for handy Noteplan actions.
 
+**[Download current version](https://github.com/beet/alfred_noteplan_actions/raw/master/downloads/NotePlan%20Actions.alfredworkflow)**
+
 I'm migrating across to Noteplan from Wunderlist which has an awesome ubiquitous quick add and search feature that I can't live without, so these actions are mainly to provide similar functionality for Noteplan through Alfred.
 
 I'd also have preferred Noteplan to have provided native auto-completion of wiki links, but it does provide a means of copying a page's link.
