@@ -2,7 +2,7 @@
 
 Alfred workflow for handy Noteplan actions.
 
-**[Download current version](https://github.com/beet/alfred_noteplan_actions/raw/master/downloads/NotePlan%20Actions.alfredworkflow)**
+**[Downloads](https://github.com/beet/alfred_noteplan_actions/releases)**
 
 I'm migrating across to Noteplan from Wunderlist which has an awesome ubiquitous quick add and search feature that I can't live without, so these actions are mainly to provide similar functionality for Noteplan through Alfred.
 
