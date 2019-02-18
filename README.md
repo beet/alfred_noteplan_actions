@@ -14,7 +14,7 @@ The create link note action is just something I use personally.
 
 Keyword: `t`
 
-Fuzzy search of calendar and text notes by title.
+Fuzzy search of calendar and text notes by title _(actually, currently by filename)_.
 
 Can enter a date in `YYYYMMDD` or even `YYYY-MM-DD` format to jump to a specific calendar note.
 
@@ -32,7 +32,7 @@ Appends to the end of the note by default, but to change to prepending to the be
 
 Keyword: `wl`
 
-Insert a wiki link to any calendar or text note with fuzzy search.
+Insert a wiki link to any text note with fuzzy search of the page headings, which is how NotePlan interlinks pages internally.
 
 ## Create link note from URL
 
@@ -49,3 +49,13 @@ Past in a URL, like `https://noteplan.co`, and this workdlow action will create 
 ```
 
 I usually add a short note beneath the link, and add some relevant tags to make the note easier to retrieve later.
+
+## Insert hashtag
+
+Keywork: `hashtag`
+
+Autocomplete of hashtags would be super useful, but seeing as it's missing, you can quickly insert any of your existing hashtags using fuzzy search of all hashtags used in all text notes with this handy workflow.
+
+Currently only allows one hashtag to be inserted at a time.
+
+_(Actually just inserts it into whatever program you happen to be using via the clipboard)_
