@@ -1,15 +1,17 @@
+=begin
+
+Produces JSON for the Alfred script filter input to search all hashtags
+included in all NotePlan files:
+
+    print NotePlan::HashTags.new.json
+
+=end
 module NotePlan
   class HashTags < Base
-    attr_reader :alfred_script_filter
-
-    def initialize
-      @alfred_script_filter = Alfred::ScriptFilter.new
-    end
-
-    def json
-      alfred_script_filter.items.concat(alfred_items)
-
-      alfred_script_filter.json
+    def alfred_items
+      tags.map do |tag|
+        Alfred::Item.new(tag)
+      end
     end
 
     private
@@ -22,12 +24,6 @@ module NotePlan
           )
         end
       end.uniq.sort
-    end
-
-    def alfred_items
-      tags.map do |tag|
-        Alfred::Item.new(tag).attributes
-      end
     end
   end
 end

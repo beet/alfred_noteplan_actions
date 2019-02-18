@@ -1,15 +1,19 @@
+=begin
+
+Produces JSON for the Alfred script filter input to search all headings
+contained in all NotePlan files:
+
+    print NotePlan::WikiLinks.new.json
+
+Takes the first top-level heading found in each note.
+
+=end
 module NotePlan
   class WikiLinks < Base
-    attr_reader :alfred_script_filter
-
-    def initialize
-      @alfred_script_filter = Alfred::ScriptFilter.new
-    end
-
-    def json
-      alfred_script_filter.items.concat(alfred_items)
-
-      alfred_script_filter.json
+    def alfred_items
+      headings.map do |heading|
+        Alfred::Item.new(heading)
+      end
     end
 
     private
@@ -20,12 +24,6 @@ module NotePlan
           array << note.scan(/^#[\s]+.*$/).first.gsub(/^# /, "")
         end
       end.uniq.sort
-    end
-
-    def alfred_items
-      headings.map do |heading|
-        Alfred::Item.new(heading).attributes
-      end
     end
   end
 end
