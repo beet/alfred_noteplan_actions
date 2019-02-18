@@ -1,3 +1,11 @@
+=begin
+
+PORO to encapsulate an Alfred script filter JSON item:
+
+    > Alfred::Item.new("foo").attributes
+    => {:title=>"foo", :subtitle=>"foo", :arg=>"foo", :autocomplete=>"foo", :match=>"foo"}
+
+=end
 module Alfred
   class Item < Alfred::Base
     attr_reader :value
