@@ -14,9 +14,7 @@ The create link note action is just something I use personally.
 
 Keyword: `t`
 
-Fuzzy search of calendar and text notes by title _(actually, currently by filename)_.
-
-Can enter a date in `YYYYMMDD` or even `YYYY-MM-DD` format to jump to a specific calendar note.
+Fuzzy search of text notes by heading.
 
 
 ## Quick add
