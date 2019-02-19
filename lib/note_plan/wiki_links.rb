@@ -11,19 +11,14 @@ Takes the first top-level heading found in each note.
 module NotePlan
   class WikiLinks < Base
     def alfred_items
-      headings.map do |heading|
-        Alfred::Item.new(heading)
-      end
-    end
-
-    private
-
-    def headings
       [].tap do |array|
-        for_each_note do |note|
-          array << note.scan(/^#[\s]+.*$/).first.gsub(/^# /, "")
+        for_each_note do |note_file|
+          array << Alfred::Item.new(
+            note_file.heading,
+            subtitle: note_file.basename
+          )
         end
-      end.uniq.sort
+      end.uniq.sort_by(&:title)
     end
   end
 end

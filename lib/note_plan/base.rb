@@ -29,7 +29,7 @@ module NotePlan
 
     def for_each_note(&block)
       Dir.glob(NOTES_DIRECTORY) do |filename|
-        yield NotePlan::NoteFile.new(filename).contents
+        yield NotePlan::NoteFile.new(filename)
       end
     end
   end

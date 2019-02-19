@@ -2,7 +2,19 @@
 
 PORO to encapsulate a note file:
 
-    NotePlan::NotePlan.new(filename).contents
+    note_file = NotePlan::NotePlan.new(filename)
+
+    note_file.contents
+    => <#String>
+
+    note_file.basename
+    => "foo.txt"
+
+    note_file.heading
+    => "# Foo"
+
+    note_file.hashtags
+    => ["#bar"]
 
 =end
 module NotePlan
@@ -15,6 +27,18 @@ module NotePlan
 
     def contents
       @contents ||= File.read(filename)
+    end
+
+    def basename
+      File.basename(filename)
+    end
+
+    def heading
+      NoteComponents::Heading.new(contents).contents
+    end
+
+    def hashtags
+      NoteComponents::HashTag.new(contents).contents
     end
   end
 end
