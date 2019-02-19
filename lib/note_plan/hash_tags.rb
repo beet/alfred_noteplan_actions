@@ -18,9 +18,9 @@ module NotePlan
 
     def tags
       [].tap do |array|
-        for_each_note do |note|
+        for_each_note do |note_file|
           array.concat(
-            note.scan(/#[\w-]+\b/)
+            note_file.hashtags
           )
         end
       end.uniq.sort
