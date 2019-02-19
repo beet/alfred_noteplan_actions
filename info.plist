@@ -73,11 +73,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>996FA159-0F3B-4A1B-A2D4-15F2C1C733BC</key>
+		<key>BD9E31D7-F171-4174-B726-A44C2DAE83EC</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>F6468D98-16BB-4FF6-825E-4563179AADC5</string>
+				<string>EB82F64E-90B1-4F50-8A6A-F5AF6DBEEAF1</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -86,11 +86,11 @@
 				<false/>
 			</dict>
 		</array>
-		<key>BD9E31D7-F171-4174-B726-A44C2DAE83EC</key>
+		<key>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>EB82F64E-90B1-4F50-8A6A-F5AF6DBEEAF1</string>
+				<string>F6468D98-16BB-4FF6-825E-4563179AADC5</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -126,6 +126,56 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>t</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>require "./lib/alfred"
+require "./lib/note_plan"
+
+print NotePlan::QuickOpen.new.json</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Quick note in NotePlan</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>openwith</key>
 				<string>/Applications/NotePlan.app</string>
 				<key>sourcefile</key>
@@ -137,84 +187,6 @@
 			<string>F6468D98-16BB-4FF6-825E-4563179AADC5</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>anchorfields</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>daterange</key>
-				<integer>0</integer>
-				<key>fields</key>
-				<array>
-					<dict>
-						<key>field</key>
-						<string>kMDItemDisplayName</string>
-						<key>not</key>
-						<false/>
-						<key>split</key>
-						<true/>
-						<key>value</key>
-						<string>{query}</string>
-						<key>words</key>
-						<true/>
-					</dict>
-					<dict>
-						<key>field</key>
-						<string>kMDItemAlternateNames</string>
-						<key>not</key>
-						<false/>
-						<key>split</key>
-						<true/>
-						<key>value</key>
-						<string>{query}</string>
-						<key>words</key>
-						<true/>
-					</dict>
-					<dict>
-						<key>field</key>
-						<string>kMDItemFinderComment</string>
-						<key>not</key>
-						<false/>
-						<key>split</key>
-						<true/>
-						<key>value</key>
-						<string>{query}</string>
-						<key>words</key>
-						<true/>
-					</dict>
-				</array>
-				<key>includesystem</key>
-				<false/>
-				<key>keyword</key>
-				<string>t</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>scopes</key>
-				<array>
-					<string>~/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents</string>
-				</array>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Open note in NotePlan</string>
-				<key>types</key>
-				<array>
-					<string>public.plain-text</string>
-				</array>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.filefilter</string>
-			<key>uid</key>
-			<string>996FA159-0F3B-4A1B-A2D4-15F2C1C733BC</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -284,23 +256,6 @@ print "noteplan://x-callback-url/addText?noteDate=#{note_date}&amp;text=#{text}&
 			<string>E574BFD8-2AA9-4FC4-8708-9C932079C9A4</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<true/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>793F4654-386B-4CE2-B264-E21D3CF2C657</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -380,23 +335,19 @@ print "[[#{query}]]"</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>link</string>
-				<key>subtext</key>
-				<string>Paste the URL of the link</string>
-				<key>text</key>
-				<string>Create a new link note</string>
-				<key>withspace</key>
+				<key>autopaste</key>
 				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
-			<string>467968E3-37CE-4D02-A237-0FA82B846134</string>
+			<string>793F4654-386B-4CE2-B264-E21D3CF2C657</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -436,6 +387,27 @@ print x_callback_url</string>
 			<string>6F16FCDA-E554-405A-B2CD-55812DF85DF3</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>link</string>
+				<key>subtext</key>
+				<string>Paste the URL of the link</string>
+				<key>text</key>
+				<string>Create a new link note</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>467968E3-37CE-4D02-A237-0FA82B846134</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -570,13 +542,6 @@ print NotePlan::HashTags.new.json</string>
 			<key>ypos</key>
 			<integer>180</integer>
 		</dict>
-		<key>996FA159-0F3B-4A1B-A2D4-15F2C1C733BC</key>
-		<dict>
-			<key>xpos</key>
-			<integer>40</integer>
-			<key>ypos</key>
-			<integer>30</integer>
-		</dict>
 		<key>AF430BBF-1499-45A3-807C-D5679E3B11C1</key>
 		<dict>
 			<key>xpos</key>
@@ -597,6 +562,13 @@ print NotePlan::HashTags.new.json</string>
 			<integer>280</integer>
 			<key>ypos</key>
 			<integer>620</integer>
+		</dict>
+		<key>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>30</integer>
 		</dict>
 		<key>E574BFD8-2AA9-4FC4-8708-9C932079C9A4</key>
 		<dict>
