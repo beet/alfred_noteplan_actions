@@ -116,13 +116,28 @@
 	<key>createdby</key>
 	<string>Mark Beattie</string>
 	<key>description</key>
-	<string></string>
+	<string>Handy extensions for working with NotePlan</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
 	<string>NotePlan Actions</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/NotePlan.app</string>
+				<key>sourcefile</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>F6468D98-16BB-4FF6-825E-4563179AADC5</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -172,21 +187,6 @@ print NotePlan::QuickOpen.new.json</string>
 			<string>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>openwith</key>
-				<string>/Applications/NotePlan.app</string>
-				<key>sourcefile</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>F6468D98-16BB-4FF6-825E-4563179AADC5</string>
-			<key>version</key>
-			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -352,6 +352,73 @@ print "[[#{query}]]"</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>hashtag</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>require "./lib/alfred"
+require "./lib/note_plan"
+
+print NotePlan::HashTags.new.json</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Select a NotePlan hashtag</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>565CEEFB-4C22-4E01-B1E4-721F43BC4276</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -428,76 +495,13 @@ print x_callback_url</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>hashtag</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>script</key>
-				<string>require "./lib/alfred"
-require "./lib/note_plan"
-
-print NotePlan::HashTags.new.json</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Select a NotePlan hashtag</string>
-				<key>type</key>
-				<integer>2</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>565CEEFB-4C22-4E01-B1E4-721F43BC4276</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<true/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>Handy extensions for interaction with NotePlan through Alfred.
+
+Quickly jump straight to a text note, add a todo to today's calendar note, insert wiki links with heading fuzzy search, insert hashtags with fuzzy search, and more.
+
+See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</string>
 	<key>uidata</key>
 	<dict>
 		<key>076090E8-CFBF-430B-98C7-10B471CDB393</key>
@@ -505,66 +509,76 @@ print NotePlan::HashTags.new.json</string>
 			<key>xpos</key>
 			<integer>260</integer>
 			<key>ypos</key>
-			<integer>180</integer>
+			<integer>200</integer>
 		</dict>
 		<key>467968E3-37CE-4D02-A237-0FA82B846134</key>
 		<dict>
+			<key>note</key>
+			<string>Paste a URL, and a new text note will be created using the website's title for the heading with a link to the site and the #links hashtag.</string>
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>460</integer>
+			<integer>760</integer>
 		</dict>
 		<key>565CEEFB-4C22-4E01-B1E4-721F43BC4276</key>
 		<dict>
+			<key>note</key>
+			<string>Insert a hashtag from the existing hashtags in your text notes with fuzzy search</string>
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>620</integer>
+			<integer>570</integer>
 		</dict>
 		<key>6F16FCDA-E554-405A-B2CD-55812DF85DF3</key>
 		<dict>
 			<key>xpos</key>
 			<integer>260</integer>
 			<key>ypos</key>
-			<integer>460</integer>
+			<integer>760</integer>
 		</dict>
 		<key>793F4654-386B-4CE2-B264-E21D3CF2C657</key>
 		<dict>
 			<key>xpos</key>
 			<integer>480</integer>
 			<key>ypos</key>
-			<integer>330</integer>
+			<integer>390</integer>
 		</dict>
 		<key>9737A391-0C8F-48BC-9D7F-9D804112585F</key>
 		<dict>
+			<key>note</key>
+			<string>Quick capture of todos from anywhere. Will be appended to today's calendar note.</string>
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>180</integer>
+			<integer>200</integer>
 		</dict>
 		<key>AF430BBF-1499-45A3-807C-D5679E3B11C1</key>
 		<dict>
 			<key>xpos</key>
-			<integer>480</integer>
+			<integer>490</integer>
 			<key>ypos</key>
-			<integer>460</integer>
+			<integer>760</integer>
 		</dict>
 		<key>BD9E31D7-F171-4174-B726-A44C2DAE83EC</key>
 		<dict>
+			<key>note</key>
+			<string>Insert a wiki link to any text note with fuzzy search by heading</string>
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
-			<integer>330</integer>
+			<integer>390</integer>
 		</dict>
 		<key>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>280</integer>
+			<integer>260</integer>
 			<key>ypos</key>
-			<integer>620</integer>
+			<integer>570</integer>
 		</dict>
 		<key>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</key>
 		<dict>
+			<key>note</key>
+			<string>Open any text note from anywhere by searching by heading</string>
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
@@ -575,14 +589,14 @@ print NotePlan::HashTags.new.json</string>
 			<key>xpos</key>
 			<integer>480</integer>
 			<key>ypos</key>
-			<integer>180</integer>
+			<integer>200</integer>
 		</dict>
 		<key>EB82F64E-90B1-4F50-8A6A-F5AF6DBEEAF1</key>
 		<dict>
 			<key>xpos</key>
 			<integer>260</integer>
 			<key>ypos</key>
-			<integer>330</integer>
+			<integer>390</integer>
 		</dict>
 		<key>F6468D98-16BB-4FF6-825E-4563179AADC5</key>
 		<dict>
@@ -592,7 +606,9 @@ print NotePlan::HashTags.new.json</string>
 			<integer>30</integer>
 		</dict>
 	</dict>
+	<key>version</key>
+	<string>0.2.0</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/beet/alfred_noteplan_actions</string>
 </dict>
 </plist>
