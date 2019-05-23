@@ -16,7 +16,7 @@ module NotePlan
           array << Alfred::Item.new(
             note_file.heading,
             subtitle: note_file.basename,
-            arg: note_file.filename
+            arg: note_file.heading
           )
         end
       end.uniq.sort_by(&:title)
