@@ -90,7 +90,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>F6468D98-16BB-4FF6-825E-4563179AADC5</string>
+				<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -112,6 +112,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>F387E1CB-87F3-4944-A1D3-42385BD31CBC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0D429F71-F409-4444-BFD9-4FB61179F851</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Mark Beattie</string>
@@ -123,21 +136,6 @@
 	<string>NotePlan Actions</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>openwith</key>
-				<string>/Applications/NotePlan.app</string>
-				<key>sourcefile</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>F6468D98-16BB-4FF6-825E-4563179AADC5</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -191,6 +189,71 @@ print NotePlan::QuickOpen.new.json</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>0D429F71-F409-4444-BFD9-4FB61179F851</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>openwith</key>
+				<string>/Applications/NotePlan.app</string>
+				<key>sourcefile</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openfile</string>
+			<key>uid</key>
+			<string>F6468D98-16BB-4FF6-825E-4563179AADC5</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query = ARGV[0]
+
+require "cgi"
+
+# Need to CGI escape the input to allow characters like &amp; through the
+# x-callback URL, and convert spaces from + to %20
+query = CGI.escape(ARGV[0]).gsub("+", "%20")
+
+print "noteplan://x-callback-url/openNote?noteTitle=#{query}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -217,7 +280,11 @@ print NotePlan::QuickOpen.new.json</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>query = ARGV[0]
+				<string>require "cgi"
+
+# Need to CGI escape the input to allow characters like &amp; through the
+# x-callback URL, but for some reason not spaces
+query = CGI.escape(ARGV[0]).gsub("+", " ")
 
 note_date = Time.now.strftime("%Y%m%d")
 
@@ -352,23 +419,6 @@ print "[[#{query}]]"</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<true/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -419,6 +469,44 @@ print NotePlan::HashTags.new.json</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query} </string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>link</string>
+				<key>subtext</key>
+				<string>Paste the URL of the link</string>
+				<key>text</key>
+				<string>Create a new link note</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>467968E3-37CE-4D02-A237-0FA82B846134</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -458,27 +546,6 @@ print x_callback_url</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>link</string>
-				<key>subtext</key>
-				<string>Paste the URL of the link</string>
-				<key>text</key>
-				<string>Create a new link note</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>467968E3-37CE-4D02-A237-0FA82B846134</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>spaces</key>
@@ -510,6 +577,13 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 			<integer>260</integer>
 			<key>ypos</key>
 			<integer>200</integer>
+		</dict>
+		<key>0D429F71-F409-4444-BFD9-4FB61179F851</key>
+		<dict>
+			<key>xpos</key>
+			<integer>470</integer>
+			<key>ypos</key>
+			<integer>30</integer>
 		</dict>
 		<key>467968E3-37CE-4D02-A237-0FA82B846134</key>
 		<dict>
@@ -598,10 +672,17 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 			<key>ypos</key>
 			<integer>390</integer>
 		</dict>
+		<key>F387E1CB-87F3-4944-A1D3-42385BD31CBC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>30</integer>
+		</dict>
 		<key>F6468D98-16BB-4FF6-825E-4563179AADC5</key>
 		<dict>
 			<key>xpos</key>
-			<integer>260</integer>
+			<integer>680</integer>
 			<key>ypos</key>
 			<integer>30</integer>
 		</dict>
