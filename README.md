@@ -10,6 +10,17 @@ I'd also have preferred Noteplan to have provided native auto-completion of wiki
 
 The create link note action is just something I use personally.
 
+## Settings
+
+To customise the workflow settings to your own preferences, select the workflow in Alfred and click the weird icon in the top right that looks kinda like `[X]`:
+
+![icons](docs/alfred_workflow_settings_icons.png)
+
+You can then change the values of workflow environment variables:
+
+![workflow environment variables](docs/alfred_workflow_environment_variables.png)
+
+
 ## Open note
 
 Keyword: `t`
@@ -23,8 +34,11 @@ Keyword: `q`
 
 Create a task in today's calendar note from the entered text.
 
-Appends to the end of the note by default, but to change to prepending to the beginning of the node, edit the Ruby script to change `mode=append` to `mode=prepend`.
+### Settings
 
+`todo_string`: You can change the todo string from `- [ ]` to any other character that NotePlan recognises like * or -.
+
+`quick_add_mode`: You can also change the insertion mode from the default of prepend which inserts the todo at the top of the calendar, to append which adds it to the bottom.
 
 ## Insert wiki link
 
