@@ -158,56 +158,12 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>openwith</key>
-				<string>/Applications/NotePlan.app</string>
-				<key>sourcefile</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>F6468D98-16BB-4FF6-825E-4563179AADC5</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>query = ARGV[0]
-
-require "cgi"
-
-# Need to CGI escape the input to allow characters like &amp; through the
-# x-callback URL, and convert spaces from + to %20
-query = CGI.escape(ARGV[0]).gsub("+", "%20")
-
-print "noteplan://x-callback-url/openNote?noteTitle=#{query}"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -249,6 +205,37 @@ print NotePlan::QuickOpen.new.json</string>
 			<key>uid</key>
 			<string>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</string>
 			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query = ARGV[0]
+
+require "cgi"
+
+# Need to CGI escape the input to allow characters like &amp; through the
+# x-callback URL, and convert spaces from + to %20
+query = CGI.escape(ARGV[0]).gsub("+", "%20")
+
+print "noteplan://x-callback-url/openNote?noteTitle=#{query}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
+			<key>version</key>
 			<integer>2</integer>
 		</dict>
 		<dict>
@@ -288,9 +275,14 @@ query = CGI.escape(ARGV[0]).gsub("+", " ")
 
 note_date = Time.now.strftime("%Y%m%d")
 
-text = "- [ ] #{query}"
+todo_string = ENV["todo_string"] || "- [ ]"
 
-print "noteplan://x-callback-url/addText?noteDate=#{note_date}&amp;text=#{text}&amp;mode=append"</string>
+text = "#{todo_string} #{query}"
+
+mode = ENV["quick_add_mode"] || "append"
+
+
+print "noteplan://x-callback-url/addText?noteDate=#{note_date}&amp;text=#{text}&amp;mode=#{mode}"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -331,6 +323,8 @@ print "noteplan://x-callback-url/addText?noteDate=#{note_date}&amp;text=#{text}&
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -372,7 +366,7 @@ print NotePlan::WikiLinks.new.json</string>
 			<key>uid</key>
 			<string>BD9E31D7-F171-4174-B726-A44C2DAE83EC</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -414,7 +408,7 @@ print "[[#{query}]]"</string>
 			<key>uid</key>
 			<string>793F4654-386B-4CE2-B264-E21D3CF2C657</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -423,6 +417,8 @@ print "[[#{query}]]"</string>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -464,7 +460,7 @@ print NotePlan::HashTags.new.json</string>
 			<key>uid</key>
 			<string>565CEEFB-4C22-4E01-B1E4-721F43BC4276</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -481,7 +477,7 @@ print NotePlan::HashTags.new.json</string>
 			<key>uid</key>
 			<string>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -679,13 +675,13 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 			<key>ypos</key>
 			<integer>30</integer>
 		</dict>
-		<key>F6468D98-16BB-4FF6-825E-4563179AADC5</key>
-		<dict>
-			<key>xpos</key>
-			<integer>680</integer>
-			<key>ypos</key>
-			<integer>30</integer>
-		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>quick_add_mode</key>
+		<string>prepend</string>
+		<key>todo_string</key>
+		<string>- [ ]</string>
 	</dict>
 	<key>version</key>
 	<string>0.3.0</string>
