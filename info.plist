@@ -8,19 +8,6 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
-		<key>076090E8-CFBF-430B-98C7-10B471CDB393</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>E574BFD8-2AA9-4FC4-8708-9C932079C9A4</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>467968E3-37CE-4D02-A237-0FA82B846134</key>
 		<array>
 			<dict>
@@ -64,7 +51,20 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>076090E8-CFBF-430B-98C7-10B471CDB393</string>
+				<string>98AA0FEB-B8FB-4411-A2B9-35ECC369F092</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>98AA0FEB-B8FB-4411-A2B9-35ECC369F092</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E574BFD8-2AA9-4FC4-8708-9C932079C9A4</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -158,56 +158,12 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>openwith</key>
-				<string>/Applications/NotePlan.app</string>
-				<key>sourcefile</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openfile</string>
-			<key>uid</key>
-			<string>F6468D98-16BB-4FF6-825E-4563179AADC5</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>query = ARGV[0]
-
-require "cgi"
-
-# Need to CGI escape the input to allow characters like &amp; through the
-# x-callback URL, and convert spaces from + to %20
-query = CGI.escape(ARGV[0]).gsub("+", "%20")
-
-print "noteplan://x-callback-url/openNote?noteTitle=#{query}"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -249,6 +205,37 @@ print NotePlan::QuickOpen.new.json</string>
 			<key>uid</key>
 			<string>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</string>
 			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query = ARGV[0]
+
+require "cgi"
+
+# Need to CGI escape the input to allow characters like &amp; through the
+# x-callback URL, and convert spaces from + to %20
+query = CGI.escape(ARGV[0]).gsub("+", "%20")
+
+print "noteplan://x-callback-url/openNote?noteTitle=#{query}"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
+			<key>version</key>
 			<integer>2</integer>
 		</dict>
 		<dict>
@@ -280,17 +267,10 @@ print NotePlan::QuickOpen.new.json</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>require "cgi"
+				<string>require "./lib/alfred"
+require "./lib/note_plan"
 
-# Need to CGI escape the input to allow characters like &amp; through the
-# x-callback URL, but for some reason not spaces
-query = CGI.escape(ARGV[0]).gsub("+", " ")
-
-note_date = Time.now.strftime("%Y%m%d")
-
-text = "- [ ] #{query}"
-
-print "noteplan://x-callback-url/addText?noteDate=#{note_date}&amp;text=#{text}&amp;mode=append"</string>
+print NotePlan::XCallbackUrl::QuickAdd.new(ARGV[0]).url</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -301,7 +281,7 @@ print "noteplan://x-callback-url/addText?noteDate=#{note_date}&amp;text=#{text}&
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>076090E8-CFBF-430B-98C7-10B471CDB393</string>
+			<string>98AA0FEB-B8FB-4411-A2B9-35ECC369F092</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -331,6 +311,8 @@ print "noteplan://x-callback-url/addText?noteDate=#{note_date}&amp;text=#{text}&
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -372,7 +354,7 @@ print NotePlan::WikiLinks.new.json</string>
 			<key>uid</key>
 			<string>BD9E31D7-F171-4174-B726-A44C2DAE83EC</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -414,7 +396,7 @@ print "[[#{query}]]"</string>
 			<key>uid</key>
 			<string>793F4654-386B-4CE2-B264-E21D3CF2C657</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -423,6 +405,8 @@ print "[[#{query}]]"</string>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
@@ -464,7 +448,7 @@ print NotePlan::HashTags.new.json</string>
 			<key>uid</key>
 			<string>565CEEFB-4C22-4E01-B1E4-721F43BC4276</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -481,7 +465,7 @@ print NotePlan::HashTags.new.json</string>
 			<key>uid</key>
 			<string>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -571,13 +555,6 @@ Quickly jump straight to a text note, add a todo to today's calendar note, inser
 See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</string>
 	<key>uidata</key>
 	<dict>
-		<key>076090E8-CFBF-430B-98C7-10B471CDB393</key>
-		<dict>
-			<key>xpos</key>
-			<integer>260</integer>
-			<key>ypos</key>
-			<integer>200</integer>
-		</dict>
 		<key>0D429F71-F409-4444-BFD9-4FB61179F851</key>
 		<dict>
 			<key>xpos</key>
@@ -623,6 +600,13 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 			<string>Quick capture of todos from anywhere. Will be appended to today's calendar note.</string>
 			<key>xpos</key>
 			<integer>40</integer>
+			<key>ypos</key>
+			<integer>200</integer>
+		</dict>
+		<key>98AA0FEB-B8FB-4411-A2B9-35ECC369F092</key>
+		<dict>
+			<key>xpos</key>
+			<integer>255</integer>
 			<key>ypos</key>
 			<integer>200</integer>
 		</dict>
@@ -679,13 +663,13 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 			<key>ypos</key>
 			<integer>30</integer>
 		</dict>
-		<key>F6468D98-16BB-4FF6-825E-4563179AADC5</key>
-		<dict>
-			<key>xpos</key>
-			<integer>680</integer>
-			<key>ypos</key>
-			<integer>30</integer>
-		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>quick_add_mode</key>
+		<string>prepend</string>
+		<key>todo_string</key>
+		<string>- [ ]</string>
 	</dict>
 	<key>version</key>
 	<string>0.3.0</string>
