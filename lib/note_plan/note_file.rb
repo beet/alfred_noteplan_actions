@@ -2,7 +2,7 @@
 
 PORO to encapsulate a note file:
 
-    note_file = NotePlan::NotePlan.new(filename)
+    note_file = NotePlan::NoteFile.new(filename)
 
     note_file.contents
     => <#String>

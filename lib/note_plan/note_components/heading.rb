@@ -1,8 +1,9 @@
 =begin
 
-Instantiate with a note's contents, and it will return the first instance of a level 1 heading:
+Instantiate with a note's contents, and it will return the first instance of a
+level 1 heading:
 
-    > NotePlan::NoteHeading.new(note_contents).contents
+    > NotePlan::NoteComponents::Heading.new(note_contents).contents
     => "# Foo"
 
 =end

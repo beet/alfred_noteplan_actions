@@ -3,7 +3,7 @@
 Produces JSON for the Alfred script filter input to search all headings
 contained in all NotePlan files:
 
-    print NotePlan::WikiLinks.new.json
+    print NotePlan::QuickOpen.new.json
 
 Takes the first top-level heading found in each note.
 
