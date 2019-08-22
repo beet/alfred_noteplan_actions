@@ -9,13 +9,17 @@ module NotePlan
       def contents
         return "" unless contains_journal_entry?
 
-        note_contents.split(journal_heading).last
+        note_contents.split(heading_pattern).last
       end
 
       private
 
       def contains_journal_entry?
-        note_contents.include?(journal_heading)
+        note_contents.match(heading_pattern) != nil
+      end
+
+      def heading_pattern
+        @heading_pattern ||= /#{Regexp.escape(journal_heading)}/i
       end
 
       def journal_heading
