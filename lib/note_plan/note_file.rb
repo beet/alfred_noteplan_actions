@@ -40,5 +40,35 @@ module NotePlan
     def hashtags
       NoteComponents::HashTag.new(contents).contents
     end
+
+    def has_journal_entry?
+      journal_entry != ""
+    end
+
+    def journal_entry
+      @journal_entry ||= NoteComponents::JournalEntry.new(contents).contents
+    end
+
+    def date
+      note_date.date
+    end
+
+    def year
+      note_date.year
+    end
+
+    def month
+      note_date.month
+    end
+
+    def day
+      note_date.day
+    end
+
+    private
+
+    def note_date
+      @note_date ||= NoteComponents::NoteDate.new(basename)
+    end
   end
 end

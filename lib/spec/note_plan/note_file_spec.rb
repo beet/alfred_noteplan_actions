@@ -60,4 +60,89 @@ RSpec.describe NotePlan::NoteFile do
       expect(note_file.hashtags).to eq(hashtag_contents)
     end
   end
+
+  context "#has_journal_entry?" do
+    before do
+      allow(note_file).to receive(:journal_entry).and_return(journal_entry_contents)
+    end
+
+    context "when the journal entry is a blank string" do
+      let(:journal_entry_contents) { "" }
+
+      it 'is false' do
+        expect(note_file.has_journal_entry?).to be_falsey
+      end
+    end
+
+    context "when the journal entry is not a blank string" do
+      let(:journal_entry_contents) { "feeb" }
+
+      it 'is true' do
+        expect(note_file.has_journal_entry?).to be_truthy
+      end
+    end
+  end
+
+  context "#journal_entry" do
+    let(:journal_entry_component) { double(NotePlan::NoteComponents::JournalEntry, contents: journal_entry_contents) }
+    let(:journal_entry_contents) { double("journal_entry_contents") }
+    let(:note_file_contents) { double("note_file_contents") }
+
+    before do
+      allow(note_file).to receive(:contents).and_return(note_file_contents)
+
+      allow(NotePlan::NoteComponents::JournalEntry).to receive(:new).with(note_file_contents).and_return(journal_entry_component)
+    end
+
+    it 'extracts the journal entry contents with NotePlan::NoteComponents::JournalEntry' do
+      expect(note_file.journal_entry).to eq(journal_entry_contents)
+    end
+  end
+
+  context "note date" do
+    let(:basename) { double("basename") }
+    let(:note_date) {
+      double(
+        NotePlan::NoteComponents::NoteDate,
+        date: date,
+        year: year,
+        month: month,
+        day: day
+      )
+    }
+    let(:date) { double("date") }
+    let(:year) { double("year") }
+    let(:month) { double("month") }
+    let(:day) { double("day") }
+
+    before do
+      allow(note_file).to receive(:basename).and_return(basename)
+
+      allow(NotePlan::NoteComponents::NoteDate).to receive(:new).with(basename).and_return(note_date)
+    end
+
+    context "#date" do
+      it 'is delegated to NotePlan::NoteComponents::NoteDate' do
+        expect(note_file.date).to eq(note_date.date)
+      end
+    end
+
+    context "#year" do
+      it 'is delegated to NotePlan::NoteComponents::NoteDate' do
+        expect(note_file.year).to eq(note_date.year)
+      end
+    end
+
+    context "#month" do
+      it 'is delegated to NotePlan::NoteComponents::NoteDate' do
+        expect(note_file.month).to eq(note_date.month)
+      end
+    end
+
+    context "#day" do
+      it 'is delegated to NotePlan::NoteComponents::NoteDate' do
+        expect(note_file.day).to eq(note_date.day)
+      end
+    end
+  end
 end
