@@ -163,15 +163,10 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>query = ARGV[0]
+				<string>require "./lib/alfred"
+require "./lib/note_plan"
 
-require "cgi"
-
-# Need to CGI escape the input to allow characters like &amp; through the
-# x-callback URL, and convert spaces from + to %20
-query = CGI.escape(ARGV[0]).gsub("+", "%20")
-
-print "noteplan://x-callback-url/openNote?noteTitle=#{query}"</string>
+print NotePlan::XCallbackUrl::OpenNote.new(ARGV[0]).url</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
