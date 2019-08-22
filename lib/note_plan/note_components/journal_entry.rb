@@ -9,13 +9,18 @@ module NotePlan
       def contents
         return "" unless contains_journal_entry?
 
-        note_contents.split(journal_heading).last
+        note_contents.split(heading_pattern).last
       end
 
       private
 
+      # /usr/bin/ruby version is 2.3.7 which predates String#match?
       def contains_journal_entry?
-        note_contents.include?(journal_heading)
+        note_contents.match(heading_pattern) != nil
+      end
+
+      def heading_pattern
+        @heading_pattern ||= /#{Regexp.escape(journal_heading)}/i
       end
 
       def journal_heading

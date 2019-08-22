@@ -24,6 +24,14 @@ RSpec.describe NotePlan::NoteComponents::JournalEntry do
       it 'is the journal entry contents' do
         expect(journal_entry.contents).to eq(journal_contents)
       end
+
+      context "when the heading is upper/lower case" do
+        let(:note_contents) { "# Heading\n\nBody\n\n#{journal_heading.downcase}#{journal_contents}" }
+
+        it 'is the journal entry contents' do
+          expect(journal_entry.contents).to eq(journal_contents)
+        end
+      end
     end
 
     context "when the notes do not contain a journal entry" do
