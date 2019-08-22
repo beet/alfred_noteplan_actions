@@ -22,10 +22,8 @@ module NotePlan
 
       private
 
-      # TODO: abstract the Noteplan-specific date format of YYYYMMDD out to a
-      # base class/module
       def note_date
-        Time.now.strftime("%Y%m%d")
+        Time.now.strftime(NotePlan::NoteComponents::NoteDate::DATE_FORMAT)
       end
 
       def text

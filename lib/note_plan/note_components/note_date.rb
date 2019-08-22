@@ -2,8 +2,6 @@
 
 PORO to encapsulate a note file's date.
 
-NotePlan follows the convention of naming calendar notes as YYYYMMDD.txt.
-
     filename = "20190822.txt"
 
     note_date = NotePlan::NoteComponents::NoteDate.new(filename)
@@ -25,6 +23,10 @@ module NotePlan
   module NoteComponents
     class NoteDate
       require "date"
+
+      # NotePlan follows the convention of naming calendar notes as
+      # YYYYMMDD.txt.
+      DATE_FORMAT = "%Y%m%d"
 
       attr_reader :filename
 
