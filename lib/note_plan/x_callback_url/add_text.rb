@@ -2,12 +2,12 @@
 
 Produces the x-callback-url to add a quick todo to today's calendar note:
 
-    NotePlan::XCallbackUrl::QuickAdd.new(ARGV[0]).url
+    NotePlan::XCallbackUrl::AddText.new(ARGV[0]).url
 
 =end
 module NotePlan
   module XCallbackUrl
-    class QuickAdd < Base
+    class AddText < Base
       def action
         "addText"
       end

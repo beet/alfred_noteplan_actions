@@ -1,12 +1,18 @@
 require "spec_helper"
 
-RSpec.describe NotePlan::XCallbackUrl::QuickAdd do
+RSpec.describe NotePlan::XCallbackUrl::AddText do
   let(:input) { "input" }
 
-  subject(:quick_add) { NotePlan::XCallbackUrl::QuickAdd.new(input) }
+  subject(:callback) { NotePlan::XCallbackUrl::AddText.new(input) }
+
+  context "#action" do
+    it 'is addText' do
+      expect(callback.action).to eq("addText")
+    end
+  end
 
   context "#parameters" do
-    let(:parameters) { quick_add.parameters }
+    let(:parameters) { callback.parameters }
 
     context ":noteDate" do
       let(:now) { double(Time) }
