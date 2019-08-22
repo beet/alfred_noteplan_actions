@@ -6,19 +6,20 @@
 module NotePlan
   module NoteComponents
     class JournalEntry < Base
-      # TODO: Alfred setttings
-      IDENTIFIER = "## Journal"
-
       def contents
         return "" unless contains_journal_entry?
 
-        note_contents.split(IDENTIFIER).last
+        note_contents.split(journal_heading).last
       end
 
       private
 
       def contains_journal_entry?
-        note_contents.include?(IDENTIFIER)
+        note_contents.include?(journal_heading)
+      end
+
+      def journal_heading
+        Alfred::Settings.journal_heading
       end
     end
   end

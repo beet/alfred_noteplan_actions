@@ -820,6 +820,8 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 	</dict>
 	<key>variables</key>
 	<dict>
+		<key>journal_heading</key>
+		<string>## Journal</string>
 		<key>quick_add_mode</key>
 		<string>prepend</string>
 		<key>todo_string</key>
