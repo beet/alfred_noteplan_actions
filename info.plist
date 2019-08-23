@@ -491,23 +491,10 @@ print NotePlan::HashTags.new.json</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>require "open-uri"
-require "uri"
-require "cgi"
+				<string>require "./lib/note_plan"
+require "./lib/alfred"
 
-url = ARGV[0]
-
-html = open(url).read
-
-page_title = html.scan(/&lt;title&gt;(.*?)&lt;\/title&gt;/).flatten.first || "Untitled link #{Time.now.strftime("%Y-%m-%n")}"
-
-note_title = CGI.escape("Link - #{page_title}"[0..79])
-
-text = CGI.escape(%([#{page_title}](#{url})\n\n#links))
-
-x_callback_url = "noteplan://x-callback-url/addNote?noteTitle=#{note_title}&amp;text=#{text}&amp;openNote=yes".gsub("+", "%20")
-
-print x_callback_url</string>
+print Alfred::Actions::AddLinkNote.new(ARGV[0]).process</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
