@@ -197,6 +197,32 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require "./lib/note_plan"
+require "./lib/alfred"
+
+print Alfred::Actions::OpenNote.new(ARGV[0]).process</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -249,37 +275,6 @@ print NotePlan::QuickOpen.new.json</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>query = ARGV[0]
-
-require "cgi"
-
-# Need to CGI escape the input to allow characters like &amp; through the
-# x-callback URL, and convert spaces from + to %20
-query = CGI.escape(ARGV[0]).gsub("+", "%20")
-
-print "noteplan://x-callback-url/openNote?noteTitle=#{query}"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -309,7 +304,7 @@ print "noteplan://x-callback-url/openNote?noteTitle=#{query}"</string>
 				<string>require "./lib/alfred"
 require "./lib/note_plan"
 
-print NotePlan::XCallbackUrl::QuickAdd.new(ARGV[0]).url</string>
+print Alfred::Actions::AddTodo.new(ARGV[0]).process</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -535,23 +530,10 @@ print NotePlan::HashTags.new.json</string>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>require "open-uri"
-require "uri"
-require "cgi"
+				<string>require "./lib/note_plan"
+require "./lib/alfred"
 
-url = ARGV[0]
-
-html = open(url).read
-
-page_title = html.scan(/&lt;title&gt;(.*?)&lt;\/title&gt;/).flatten.first || "Untitled link #{Time.now.strftime("%Y-%m-%n")}"
-
-note_title = CGI.escape("Link - #{page_title}"[0..79])
-
-text = CGI.escape(%([#{page_title}](#{url})\n\n#links))
-
-x_callback_url = "noteplan://x-callback-url/addNote?noteTitle=#{note_title}&amp;text=#{text}&amp;openNote=yes".gsub("+", "%20")
-
-print x_callback_url</string>
+print Alfred::Actions::AddLinkNote.new(ARGV[0]).process</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
