@@ -265,7 +265,7 @@ print NotePlan::QuickOpen.new.json</string>
 				<string>require "./lib/alfred"
 require "./lib/note_plan"
 
-print NotePlan::XCallbackUrl::AddText.new(ARGV[0]).url</string>
+print Alfred::Actions::AddTodo.new(ARGV[0]).process</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
