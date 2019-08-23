@@ -1,9 +1,19 @@
 require "spec_helper"
 
 RSpec.describe NotePlan::XCallbackUrl::AddText do
-  let(:input) { "input" }
+  require "date"
 
-  subject(:callback) { NotePlan::XCallbackUrl::AddText.new(input) }
+  let(:input) { "input" }
+  let(:date) { Date.today }
+  let(:mode) { double("mode") }
+
+  subject(:callback) {
+    NotePlan::XCallbackUrl::AddText.new(
+      input,
+      date: date,
+      mode: mode
+    )
+  }
 
   context "#action" do
     it 'is addText' do
@@ -15,54 +25,27 @@ RSpec.describe NotePlan::XCallbackUrl::AddText do
     let(:parameters) { callback.parameters }
 
     context ":noteDate" do
-      let(:now) { double(Time) }
-      let(:note_date) { double("note_date") }
+      let(:date_string) { double("date_string") }
 
       before do
-        allow(Time).to receive(:now).and_return(now)
-
-        allow(now).to receive(:strftime).with("%Y%m%d").and_return(note_date)
+        # TODO: re-factor with NotePlan::NoteComponents::NoteDate::DATE_FORMAT
+        allow(date).to receive(:strftime).with("%Y%m%d").and_return(date_string)
       end
 
-      it 'is the current time in YYYYMMDD format' do
-        expect(parameters[:noteDate]).to eq(note_date)
+      it 'is a formatted string from the :date argument' do
+        expect(parameters[:noteDate]).to eq(date_string)
       end
     end
 
     context ":text" do
-      let(:todo_string) { "- [ ]" }
-
-      module Settings
-        def todo_string; end
-      end
-
-      before do
-        Alfred::Settings.extend(Settings)
-
-
-        allow(Alfred::Settings).to receive(:todo_string).and_return(todo_string)
-      end
-
-      it 'prefixes the input with the todo string from the Alfred settings' do
-        expect(parameters[:text]).to eq("#{todo_string} #{input}")
+      it 'is the input' do
+        expect(parameters[:text]).to eq(input)
       end
     end
 
     context ":mode" do
-      let(:quick_add_mode) { "prepend" }
-
-      module Settings
-        def quick_add_mode; end
-      end
-
-      before do
-        Alfred::Settings.extend(Settings)
-
-        allow(Alfred::Settings).to receive(:quick_add_mode).and_return(quick_add_mode)
-      end
-
-      it 'is the quick add mode from the Alfred settings' do
-        expect(parameters[:mode]).to eq(quick_add_mode)
+      it 'is the :mode argument' do
+        expect(parameters[:mode]).to eq(mode)
       end
     end
   end

@@ -1,8 +1,15 @@
 =begin
 
-Produces the x-callback-url to add a quick todo to today's calendar note:
+Produces the x-callback-url to add text to a given calendar note:
 
-    NotePlan::XCallbackUrl::AddText.new(ARGV[0]).url
+    NotePlan::XCallbackUrl::AddText.new(
+      text,
+      date: date,
+      mode: mode
+    ).url
+
+* date: a Date/Time object
+* mode: a string like "append", "prepend"
 
 =end
 module NotePlan
@@ -14,30 +21,18 @@ module NotePlan
 
       def parameters
         {
-          noteDate: note_date,
-          text: text,
+          noteDate: date_string,
+          text: input,
           mode: mode
         }
       end
 
       private
 
-      # TODO: abstract the Noteplan-specific date format of YYYYMMDD out to a
-      # base class/module
-      def note_date
-        Time.now.strftime("%Y%m%d")
-      end
-
-      def text
-        "#{todo_string} #{input}"
-      end
-
-      def todo_string
-        Alfred::Settings.todo_string
-      end
-
-      def mode
-        Alfred::Settings.quick_add_mode
+      # TODO: Has been abstracted out to
+      # NotePlan::NoteComponents::NoteDate::DATE_FORMAT in PR #7
+      def date_string
+        date.strftime("%Y%m%d")
       end
     end
   end
