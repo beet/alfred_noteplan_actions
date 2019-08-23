@@ -4,14 +4,12 @@ RSpec.describe NotePlan::XCallbackUrl::Base do
   class ConcreteCallback < NotePlan::XCallbackUrl::Base; end
 
   let(:input) { "input" }
-  let(:action) { "addText" }
+  let(:action) { "concreteCallback" }
   let(:parameters) { { foo: "bar", sna: "fu" } }
 
-  subject(:callback) { NotePlan::XCallbackUrl::Base.new(input) }
+  subject(:callback) { ConcreteCallback.new(input) }
 
   before do
-    allow(callback).to receive(:action).and_return(action)
-
     allow(callback).to receive(:parameters).and_return(parameters)
   end
 
@@ -22,7 +20,7 @@ RSpec.describe NotePlan::XCallbackUrl::Base do
       expect(url).to match(/^noteplan:\/\/x-callback-url/)
     end
 
-    it 'sets the path to the concrete class action' do
+    it 'sets the path to the concrete class action as inferred from the class name' do
       expect(url).to match(/x-callback-url\/#{action}\?/)
     end
 
@@ -40,7 +38,7 @@ RSpec.describe NotePlan::XCallbackUrl::Base do
   end
 
   context "options accessors" do
-    subject(:callback) { NotePlan::XCallbackUrl::Base.new(input, foo: "bar") }
+    subject(:callback) { ConcreteCallback.new(input, foo: "bar") }
 
     it 'provides an accessor for each key in the options hash' do
       expect(callback.foo).to eq("bar")

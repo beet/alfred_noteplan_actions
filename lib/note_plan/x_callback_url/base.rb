@@ -4,14 +4,17 @@ require "cgi"
 
 Template class for creating NotePlan x-callback-urls. Concrete classes must define:
 
-* #action: string like "addText"
 * #parameters: hash like { noteDate: 20180122 }
 
 All parameter values will be CGI escaped.
 
+The naming convention is to derive the NotePlan x-callback-url action from the
+class name. For example, an action of "addNote" would be inferred from a class
+of NotePlan::XCallbackUrl::AddNote
+
 Callbacks are generally constructed with a single input string, but can take
-an optional hash that will exposed as accessor methods for constructing more
-complex callback URLs:
+an optional hash that will be exposed as accessor methods for constructing
+more complex callback URLs:
 
   callback = FooCallback.new(input, foo: "bar")
 
@@ -47,8 +50,13 @@ module NotePlan
 
       private
 
-      # Template method. Must be a string like "addText"
-      def action; end
+      # Follows the convention of an x-callback-url action of "addText"
+      # matching a class name of "AddText"
+      def action
+        self.class.name.split("::").last.tap do |class_name|
+          class_name[0] = class_name[0].downcase
+        end
+      end
 
       # Template method. Must be a hash like { foo: "bar" }
       def parameters; end

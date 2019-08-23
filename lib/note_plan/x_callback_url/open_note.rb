@@ -8,10 +8,6 @@ Produces the x-callback-url to open a text note by the given title:
 module NotePlan
   module XCallbackUrl
     class OpenNote < Base
-      def action
-        "openNote"
-      end
-
       def parameters
         {
           noteTitle: input

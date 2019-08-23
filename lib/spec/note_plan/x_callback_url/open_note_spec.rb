@@ -7,7 +7,7 @@ RSpec.describe NotePlan::XCallbackUrl::OpenNote do
 
   context "#action" do
     it 'is openNote' do
-      expect(callback.action).to eq("openNote")
+      expect(callback.url).to include("/openNote?")
     end
   end
 

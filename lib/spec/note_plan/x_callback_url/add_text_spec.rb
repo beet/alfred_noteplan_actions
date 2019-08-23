@@ -5,7 +5,7 @@ RSpec.describe NotePlan::XCallbackUrl::AddText do
 
   let(:input) { "input" }
   let(:date) { Date.today }
-  let(:mode) { double("mode") }
+  let(:mode) { "mode" }
 
   subject(:callback) {
     NotePlan::XCallbackUrl::AddText.new(
@@ -17,7 +17,7 @@ RSpec.describe NotePlan::XCallbackUrl::AddText do
 
   context "#action" do
     it 'is addText' do
-      expect(callback.action).to eq("addText")
+      expect(callback.url).to include("/addText?")
     end
   end
 

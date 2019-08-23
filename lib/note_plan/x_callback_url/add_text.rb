@@ -15,10 +15,6 @@ Produces the x-callback-url to add text to a given calendar note:
 module NotePlan
   module XCallbackUrl
     class AddText < Base
-      def action
-        "addText"
-      end
-
       def parameters
         {
           noteDate: date_string,
