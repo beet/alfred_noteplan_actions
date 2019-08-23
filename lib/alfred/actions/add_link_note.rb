@@ -11,9 +11,6 @@ module Alfred
     class AddLinkNote < Base
       require "open-uri"
 
-      # Limit note title size
-      NOTE_TITLE_SIZE = 80
-
       alias_method :url, :input
 
       def process
@@ -31,7 +28,7 @@ module Alfred
       end
    
       def note_text
-        %([#{page_title}](#{url})\n\n#links)
+        %(\n[#{page_title}](#{url})\n\n#links)
       end
 
       def page_title
@@ -39,7 +36,7 @@ module Alfred
       end
 
       def note_title
-        "Link - #{page_title}"[0..(NOTE_TITLE_SIZE - 1)]
+        "# Link - #{page_title}"
       end
     end
   end

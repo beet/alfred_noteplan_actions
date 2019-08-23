@@ -22,21 +22,19 @@ RSpec.describe Alfred::Actions::AddLinkNote do
 
   context "callback construction" do
     let(:webpage) { double(Alfred::Components::WebPage, title: page_title) }
-    let(:page_title) { "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Primum quid tu dicis breve? Quid enim est a Chrysippo praetermissum in Stoicis?" }
+    let(:page_title) { "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Primum quid tu dicis breve?" }
     let(:note_title) { "Link - #{page_title}"[0..(Alfred::Actions::AddLinkNote::NOTE_TITLE_SIZE - 1)] }
     let(:url) { input }
     # let(:note_text) { %([#{page_title}](#{url})\n\n#links) }
 
     before do
-      expect(page_title.size > Alfred::Actions::AddLinkNote::NOTE_TITLE_SIZE).to be_truthy
-
       allow(Alfred::Components::WebPage).to receive(:new).with(url).and_return(webpage)
     end
 
     it 'constructs the note text with a link to the webpage and the #links hashtag' do
       expect(NotePlan::XCallbackUrl::AddNote).to receive(:new)
         .with(
-          %([#{page_title}](#{url})\n\n#links),
+          %(\n[#{page_title}](#{url})\n\n#links),
           anything
         )
         .and_return(callback)
@@ -48,7 +46,7 @@ RSpec.describe Alfred::Actions::AddLinkNote do
       expect(NotePlan::XCallbackUrl::AddNote).to receive(:new)
         .with(
           anything,
-          title: "Link - #{page_title}"[0..(Alfred::Actions::AddLinkNote::NOTE_TITLE_SIZE - 1)]
+          title: "# Link - #{page_title}"
         )
         .and_return(callback)
 
