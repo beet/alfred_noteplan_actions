@@ -38,4 +38,16 @@ RSpec.describe NotePlan::XCallbackUrl::Base do
       end
     end
   end
+
+  context "options accessors" do
+    subject(:callback) { NotePlan::XCallbackUrl::Base.new(input, foo: "bar") }
+
+    it 'provides an accessor for each key in the options hash' do
+      expect(callback.foo).to eq("bar")
+    end
+
+    it 'raises NoMethodError when attempting to call an accessor that does not match a kek in the options hash' do
+      expect { callback.bar }.to raise_error(NoMethodError)
+    end
+  end
 end

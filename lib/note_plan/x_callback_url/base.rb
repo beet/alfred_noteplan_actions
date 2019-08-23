@@ -9,20 +9,40 @@ Template class for creating NotePlan x-callback-urls. Concrete classes must defi
 
 All parameter values will be CGI escaped.
 
+Callbacks are generally constructed with a single input string, but can take
+an optional hash that will exposed as accessor methods for constructing more
+complex callback URLs:
+
+  callback = FooCallback.new(input, foo: "bar")
+
+  callback.foo
+  => "bar"
+
+  callback.bar
+  NoMethodError: undefined method `bar'
+
 =end
 module NotePlan
   module XCallbackUrl
     class Base
       BASE_URL = "noteplan://x-callback-url"
 
-      attr_reader :input
+      attr_reader :input, :options
 
-      def initialize(input)
+      def initialize(input, options = {})
         @input = input
+
+        @options = options
       end
 
       def url
         "#{BASE_URL}/#{action}?#{action_parameters}"
+      end
+
+      def method_missing(option, *args)
+        super unless options.has_key?(option)
+
+        options[option]
       end
 
       private
