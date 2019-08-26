@@ -20,20 +20,7 @@ Produces semantic Markdown like:
 =end
 module NotePlan
   class JournalSummary < Base
-    MONTH_NAMES = {
-      1 => "January",
-      2 => "February",
-      3 => "March",
-      4 => "April",
-      5 => "May",
-      6 => "June",
-      7 => "July",
-      8 => "August",
-      9 => "September",
-      10 => "October",
-      11 => "November",
-      12 => "December"
-    }
+    require "date"
 
     def process
       process_calendar_data
@@ -45,7 +32,7 @@ module NotePlan
           contents << "## #{year}\n\n"
 
           years[year].keys.sort.each do |month|
-            contents << "### #{MONTH_NAMES[month]}\n\n"
+            contents << "### #{month_name_for(year, month)}\n\n"
 
             years[year][month].keys.sort.each do |day|
               note_file = years[year][month][day]
@@ -75,6 +62,10 @@ module NotePlan
 
     def years
       @years ||= {}
+    end
+
+    def month_name_for(year, month)
+      Date.new(year, month, 1).strftime("%B")
     end
   end
 end
