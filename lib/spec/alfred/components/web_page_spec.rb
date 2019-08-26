@@ -27,5 +27,13 @@ RSpec.describe Alfred::Components::WebPage do
         expect(web_page.title).to eq(title)
       end
     end
+
+    context "when the title contains HTML encoded characters" do
+      let(:title) { "Vegetable Latkes | Mark&#039;s Daily Apple" }
+
+      it 'decodes them' do
+        expect(web_page.title).to eq("Vegetable Latkes | Mark's Daily Apple")
+      end
+    end
   end
 end

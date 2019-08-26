@@ -21,10 +21,18 @@ module Alfred
       end
 
       def title
-        @title ||= html.scan(/<title[^>]*>(.*?)<\/title>/).flatten.first
+        @title ||= unescaped_title_contents
       end
 
       private
+
+      def unescaped_title_contents
+        CGI.unescapeHTML(title_contents)
+      end
+
+      def title_contents
+        html.scan(/<title[^>]*>(.*?)<\/title>/).flatten.first
+      end
 
       def html
         @html ||= open(url).read
