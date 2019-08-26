@@ -11,7 +11,9 @@ note files and yields a NotePlan::NoteFile instance.
 =end
 module NotePlan
   class Base
-    NOTES_DIRECTORY = "#{ENV["HOME"]}/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents/Notes/*.txt"
+    BASE_DIRECTORY = "#{ENV["HOME"]}/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents"
+    NOTES_DIRECTORY = "#{BASE_DIRECTORY}/Notes/*.txt"
+    CALENDAR_DIRECTORY = "#{BASE_DIRECTORY}/Calendar/*.txt"
 
     attr_reader :alfred_script_filter
 
@@ -29,6 +31,12 @@ module NotePlan
 
     def for_each_note(&block)
       Dir.glob(NOTES_DIRECTORY) do |filename|
+        yield NotePlan::NoteFile.new(filename)
+      end
+    end
+
+    def for_each_calendar_entry(&block)
+      Dir.glob(CALENDAR_DIRECTORY) do |filename|
         yield NotePlan::NoteFile.new(filename)
       end
     end

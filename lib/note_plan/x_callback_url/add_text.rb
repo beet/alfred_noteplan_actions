@@ -25,10 +25,8 @@ module NotePlan
 
       private
 
-      # TODO: Has been abstracted out to
-      # NotePlan::NoteComponents::NoteDate::DATE_FORMAT in PR #7
       def date_string
-        date.strftime("%Y%m%d")
+        date.strftime(NotePlan::NoteComponents::NoteDate::DATE_FORMAT)
       end
     end
   end

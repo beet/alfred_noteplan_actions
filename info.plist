@@ -8,6 +8,19 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
+		<key>0C5FD526-22A5-44DB-9C94-66665CE4CB1E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>CE3686D4-750F-45EA-87C7-053E69F86755</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>467968E3-37CE-4D02-A237-0FA82B846134</key>
 		<array>
 			<dict>
@@ -99,6 +112,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>DAC024F8-5725-4685-A81C-3126018F8FFF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0C5FD526-22A5-44DB-9C94-66665CE4CB1E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>EB82F64E-90B1-4F50-8A6A-F5AF6DBEEAF1</key>
 		<array>
 			<dict>
@@ -158,32 +184,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>require "./lib/alfred"
-require "./lib/note_plan"
-
-print Alfred::Actions::OpenNote.new(ARGV[0]).process</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -232,6 +232,32 @@ print NotePlan::QuickOpen.new.json</string>
 			<string>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require "./lib/note_plan"
+require "./lib/alfred"
+
+print Alfred::Actions::OpenNote.new(ARGV[0]).process</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -465,27 +491,6 @@ print NotePlan::HashTags.new.json</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>link</string>
-				<key>subtext</key>
-				<string>Paste the URL of the link</string>
-				<key>text</key>
-				<string>Create a new link note</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>467968E3-37CE-4D02-A237-0FA82B846134</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -512,6 +517,27 @@ print Alfred::Actions::AddLinkNote.new(ARGV[0]).process</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>link</string>
+				<key>subtext</key>
+				<string>Paste the URL of the link</string>
+				<key>text</key>
+				<string>Create a new link note</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>467968E3-37CE-4D02-A237-0FA82B846134</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>spaces</key>
@@ -528,6 +554,72 @@ print Alfred::Actions::AddLinkNote.new(ARGV[0]).process</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string></string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>CE3686D4-750F-45EA-87C7-053E69F86755</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require "./lib/note_plan"
+require "./lib/alfred"
+
+print Alfred::Actions::CreateJournalSummary.process</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0C5FD526-22A5-44DB-9C94-66665CE4CB1E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>js</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Journal Summary</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>DAC024F8-5725-4685-A81C-3126018F8FFF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Handy extensions for interaction with NotePlan through Alfred.
@@ -537,6 +629,13 @@ Quickly jump straight to a text note, add a todo to today's calendar note, inser
 See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</string>
 	<key>uidata</key>
 	<dict>
+		<key>0C5FD526-22A5-44DB-9C94-66665CE4CB1E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>260</integer>
+			<key>ypos</key>
+			<integer>990</integer>
+		</dict>
 		<key>0D429F71-F409-4444-BFD9-4FB61179F851</key>
 		<dict>
 			<key>xpos</key>
@@ -615,6 +714,13 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 			<key>ypos</key>
 			<integer>570</integer>
 		</dict>
+		<key>CE3686D4-750F-45EA-87C7-053E69F86755</key>
+		<dict>
+			<key>xpos</key>
+			<integer>485</integer>
+			<key>ypos</key>
+			<integer>990</integer>
+		</dict>
 		<key>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</key>
 		<dict>
 			<key>note</key>
@@ -623,6 +729,15 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 			<integer>40</integer>
 			<key>ypos</key>
 			<integer>30</integer>
+		</dict>
+		<key>DAC024F8-5725-4685-A81C-3126018F8FFF</key>
+		<dict>
+			<key>note</key>
+			<string>Produces a Markdown summary of journal entries extracted from NotePlan's calendar notes</string>
+			<key>xpos</key>
+			<integer>40</integer>
+			<key>ypos</key>
+			<integer>990</integer>
 		</dict>
 		<key>E574BFD8-2AA9-4FC4-8708-9C932079C9A4</key>
 		<dict>
@@ -648,6 +763,8 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 	</dict>
 	<key>variables</key>
 	<dict>
+		<key>journal_heading</key>
+		<string>## Journal</string>
 		<key>quick_add_mode</key>
 		<string>prepend</string>
 		<key>todo_string</key>
