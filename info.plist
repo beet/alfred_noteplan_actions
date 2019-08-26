@@ -165,6 +165,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>0D429F71-F409-4444-BFD9-4FB61179F851</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -243,25 +262,6 @@ print Alfred::Actions::OpenNote.new(ARGV[0]).process</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>0D429F71-F409-4444-BFD9-4FB61179F851</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -277,25 +277,6 @@ print Alfred::Actions::OpenNote.new(ARGV[0]).process</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>9737A391-0C8F-48BC-9D7F-9D804112585F</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>E574BFD8-2AA9-4FC4-8708-9C932079C9A4</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -324,6 +305,25 @@ print Alfred::Actions::AddTodo.new(ARGV[0]).process</string>
 			<string>98AA0FEB-B8FB-4411-A2B9-35ECC369F092</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>E574BFD8-2AA9-4FC4-8708-9C932079C9A4</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -422,23 +422,6 @@ print "[[#{query}]]"</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<true/>
-				<key>clipboardtext</key>
-				<string>{query} </string>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -491,6 +474,23 @@ print NotePlan::HashTags.new.json</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query} </string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -513,25 +513,6 @@ print Alfred::Actions::AddLinkNote.new(ARGV[0]).process</string>
 			<string>6F16FCDA-E554-405A-B2CD-55812DF85DF3</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>AF430BBF-1499-45A3-807C-D5679E3B11C1</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -562,6 +543,25 @@ print Alfred::Actions::AddLinkNote.new(ARGV[0]).process</string>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>AF430BBF-1499-45A3-807C-D5679E3B11C1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
 				<string></string>
 				<key>utf8</key>
 				<true/>
@@ -572,6 +572,32 @@ print Alfred::Actions::AddLinkNote.new(ARGV[0]).process</string>
 			<string>CE3686D4-750F-45EA-87C7-053E69F86755</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require "./lib/note_plan"
+require "./lib/alfred"
+
+print Alfred::Actions::CreateJournalSummary.process</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0C5FD526-22A5-44DB-9C94-66665CE4CB1E</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -593,34 +619,6 @@ print Alfred::Actions::AddLinkNote.new(ARGV[0]).process</string>
 			<string>DAC024F8-5725-4685-A81C-3126018F8FFF</string>
 			<key>version</key>
 			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>require "./lib/note_plan"
-require "./lib/alfred"
-
-# print Alfred::Actions::CreateJournalSummary.new("").process
-
-print Alfred::Actions::CreateJournalSummary.process</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>0C5FD526-22A5-44DB-9C94-66665CE4CB1E</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 	</array>
 	<key>readme</key>
