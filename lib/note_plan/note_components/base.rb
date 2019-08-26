@@ -1,3 +1,8 @@
+=begin
+
+Note components can be told to do things with note file contents
+
+=end
 module NotePlan
   module NoteComponents
     class Base
