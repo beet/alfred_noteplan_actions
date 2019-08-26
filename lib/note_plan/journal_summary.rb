@@ -39,7 +39,7 @@ module NotePlan
       process_calendar_data
 
       "".tap do |contents|
-        contents << "# Journal Summary\n\n"
+        contents << "\n"
 
         years.keys.sort.each do |year|
           contents << "## #{year}\n\n"
