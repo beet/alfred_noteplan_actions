@@ -4,11 +4,9 @@ Alfred workflow for handy Noteplan actions.
 
 **[Downloads](https://github.com/beet/alfred_noteplan_actions/releases)**
 
-I'm migrating across to Noteplan from Wunderlist which has an awesome ubiquitous quick add and search feature that I can't live without, so these actions are mainly to provide similar functionality for Noteplan through Alfred.
+[Bullet Journalling](https://bulletjournal.com) is described as "a mindfulness practice disguised as a productivity system", and while pen and paper may suit many, for me [NotePlan](https://noteplan.co) is the perfect intersection of digital convenience and Bullet Journal mindfulness.
 
-I'd also have preferred Noteplan to have provided native auto-completion of wiki links, but it does provide a means of copying a page's link.
-
-The create link note action is just something I use personally.
+By providing an [extensive x-callback-url scheme](https://noteplan.co/faq/General/X-Callback-Url%20Scheme/), NotePlan has allowed this [Alfred](https://www.alfredapp.com) workflow to extend its functionality to get even more done with less effort.
 
 ## Settings
 
@@ -64,10 +62,31 @@ I usually add a short note beneath the link, and add some relevant tags to make 
 
 ## Insert hashtag
 
-Keywork: `hashtag`
+Keyword: `hashtag`
 
 Autocomplete of hashtags would be super useful, but seeing as it's missing, you can quickly insert any of your existing hashtags using fuzzy search of all hashtags used in all text notes with this handy workflow.
 
 Currently only allows one hashtag to be inserted at a time.
 
 _(Actually just inserts it into whatever program you happen to be using via the clipboard)_
+
+## Journal summary
+
+One of the most powerful aspects of Bullet Journalling is the [reflection process](https://bulletjournal.com/blogs/bulletjournalist/reflection). While there have been some [hints](https://twitter.com/NotePlanApp/status/1151547198854914050) at NotePlan providing some kind of separation of daily notes, I've taken to the following convention:
+
+* End each day with a quiet reflection
+    * _(Use one of NotePlan's beautiful dark-themes for kindness to your circadian rythm)_
+* Add a sub-heading to the bottom of the day's calendar note like `## Journal`
+* Follow that with a short journal entry
+
+The tactile feel of flipping back through calendar notes to review your recent journal entries is quite similar to paging through a paper notebook. Could it trigger similar neural pathways?
+
+This is fine for week to week reflection, but for a birds-eye view from month to month, or even an entire year _(I've been doing this since Jan 2019)_, open Alfred and enter the keyword `js` to have it extract all of your journal entries, sort them chronologically, and create a summary in a new text note.
+
+Keyword: `js`
+
+### Settings
+
+`journal_heading` - defaults to `## Journal`, but you may wish to use a different heading level or title.
+
+This will be used for the title of the summary text note. For example, the default calendar note heading of `## Journal` will produce a text note with a title of `# Journal Summary`
