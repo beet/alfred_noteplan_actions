@@ -52,7 +52,7 @@ module NotePlan
 
               contents << "#### #{note_file.date.strftime("%A %e")}\n\n"
 
-              contents << "#{note_file.journal_entry}\n\n"
+              contents << "#{note_file.journal_entry.strip}\n\n"
             end
           end
         end
