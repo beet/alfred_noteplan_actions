@@ -11,6 +11,9 @@ note files and yields a NotePlan::NoteFile instance.
 =end
 module NotePlan
   class Base
+    # For Dropbox storage, update this:
+    # BASE_DIRECTORY = "#{ENV["HOME"]}/path_to_dropbox_noteplan_folder_here"
+    # For iClo;ud storage option:
     BASE_DIRECTORY = "#{ENV["HOME"]}/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents"
     NOTES_DIRECTORY = "#{BASE_DIRECTORY}/Notes/*.txt"
     CALENDAR_DIRECTORY = "#{BASE_DIRECTORY}/Calendar/*.txt"
