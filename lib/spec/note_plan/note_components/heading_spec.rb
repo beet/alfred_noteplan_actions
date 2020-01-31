@@ -9,5 +9,13 @@ RSpec.describe NotePlan::NoteComponents::Heading do
     it 'extracts the first heading 1 from the note contents' do
       expect(component.contents).to eq("Heading 1")
     end
+
+    context "when the note contents do not contain a Markdown heading" do
+      let(:note_contents) { "Body\n\n" }
+
+      it 'is blank' do
+        expect(component.contents).to eq("")
+      end
+    end
   end
 end
