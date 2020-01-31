@@ -22,8 +22,21 @@ RSpec.describe NotePlan::Base do
     end
   end
 
+  module Settings
+    def base_directory
+      method_missing(:base_directory)
+    end
+  end
+
+  before do
+    Alfred::Settings.extend(Settings)
+
+    allow(Alfred::Settings).to receive(:base_directory).and_return(base_directory)
+  end
+
   let(:alfred_item) { double(Alfred::Item, attributes: attributes) }
   let(:attributes) { { foo: "bar" } }
+  let(:base_directory) { "/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents" }
 
   subject(:concrete_class) { NotePlan::ConcreteClass.new }
 
@@ -60,7 +73,7 @@ RSpec.describe NotePlan::Base do
   end
 
   context "text note iteration" do
-    let(:notes_directory) { "#{ENV["HOME"]}/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents/Notes/*.txt" }
+    let(:notes_directory) { "#{ENV["HOME"]}#{base_directory}/Notes/*.txt" }
     let(:note_file) { double(NotePlan::NoteFile, filename: filename) }
     let(:filename) { "filename" }
 
@@ -76,7 +89,7 @@ RSpec.describe NotePlan::Base do
   end
 
   context "calendar note iteration" do
-    let(:notes_directory) { "#{ENV["HOME"]}/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents/Calendar/*.txt" }
+    let(:notes_directory) { "#{ENV["HOME"]}#{base_directory}/Calendar/*.txt" }
     let(:note_file) { double(NotePlan::NoteFile, filename: filename) }
     let(:filename) { "filename" }
 
