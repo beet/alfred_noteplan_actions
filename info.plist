@@ -769,6 +769,8 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 		<string>prepend</string>
 		<key>todo_string</key>
 		<string>- [ ]</string>
+		<key>base_directory</key>
+		<string>/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents</string>
 	</dict>
 	<key>version</key>
 	<string>0.5.0</string>
