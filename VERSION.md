@@ -1,5 +1,12 @@
 # Versions
 
+## 0.6.0
+
+Quick open fix, Dropbox support
+
+* FIX: #3 - quick open works when notes are present without a heading _(but can't open them)_
+* NEW: #12 - Change change the notes directory to support other sync services like Dropbox
+
 ## 0.5.0
 
 Journal Summary

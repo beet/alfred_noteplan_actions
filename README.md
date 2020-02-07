@@ -18,6 +18,11 @@ You can then change the values of workflow environment variables:
 
 ![workflow environment variables](docs/alfred_workflow_environment_variables.png)
 
+### Changing the notes location from iCloud to Dropbox etc.
+
+If you're not using iCloud for syncing your notes, you can change the `base_directory` environment variable to the **relative path** of wherever your notes are stored.
+
+For example, if your notes are under `/Users/foo/Dropbox`, change `base_directory` to `/Dropbox`, or wherever they happen to be under your home holder.
 
 ## Open note
 
