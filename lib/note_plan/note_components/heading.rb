@@ -11,7 +11,21 @@ module NotePlan
   module NoteComponents
     class Heading < Base
       def contents
-        note_contents.scan(/^#[\s]+.*$/).first.gsub(/^# /, "")
+        first_heading_string.gsub(/^# /, "")
+      end
+
+      private
+
+      def first_heading_string
+        first_heading.to_s
+      end
+
+      def first_heading
+        headings.first
+      end
+
+      def headings
+        note_contents.scan(/^#[\s]+.*$/)
       end
     end
   end
