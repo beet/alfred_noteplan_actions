@@ -34,6 +34,10 @@ module NotePlan
         @filename = filename
       end
 
+      def date_formatted
+        date.strftime("%Y-%m-%d")
+      end
+
       def date
         Date.new(year, month, day)
       end
