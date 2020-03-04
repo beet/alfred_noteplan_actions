@@ -9,17 +9,19 @@ RSpec.describe NotePlan::NoteFiles::Calendar do
     let(:note_date) {
       double(
         NotePlan::NoteComponents::NoteDate,
-        date_formatted: formatted_note_date
+        date_formatted: formatted_note_date,
+        date_human: date_human
       )
     }
-    let(:formatted_note_date) { double("formatted_note_date") }
+    let(:formatted_note_date) { "formatted_note_date" }
+    let(:date_human) { "date_human" }
 
     before do
       allow(note_file).to receive(:note_date).and_return(note_date)
     end
 
-    it 'is the formatted note date' do
-      expect(note_file.heading).to eq(formatted_note_date)
+    it 'is the ISO and formatted note date' do
+      expect(note_file.heading).to eq("#{formatted_note_date} - #{date_human}")
     end
   end
 

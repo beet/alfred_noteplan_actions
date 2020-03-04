@@ -23,7 +23,7 @@ module NotePlan
       # Calendar notes don't have a heading, or rather they can, but for
       # presenting in Alfred script filters use the YYYY-MM-DD formatted date
       def heading
-        note_date.date_formatted
+        "#{note_date.date_formatted} - #{note_date.date_human}"
       end
 
       def has_journal_entry?
