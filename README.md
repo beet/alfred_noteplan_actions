@@ -28,7 +28,22 @@ For example, if your notes are under `/Users/foo/Dropbox`, change `base_director
 
 Keyword: `t`
 
-Fuzzy search of text notes by heading.
+Fuzzy search of text notes by heading, and calendar notes by date.
+
+### Opening calendar notes
+
+
+**NOTE:** can currently only quick-open _existing_ calendar notes. It can't open a date that you've never taken notes on.
+
+Can either use ISO YYYY-MM-DD format:
+
+![iso](docs/quick_open_calendar_iso.png)
+
+Or various fuzzy searches in human-friendly formats: _(Alfred's script filter is very powerful)_
+
+![fuzzy1](docs/quick_open_calendar_fuzzy_1.png)
+
+![fuzzy2](docs/quick_open_calendar_fuzzy_2.png)
 
 
 ## Quick add
@@ -43,7 +58,9 @@ Create a task in today's calendar note from the entered text.
 
 `quick_add_mode`: You can also change the insertion mode from the default of prepend which inserts the todo at the top of the calendar, to append which adds it to the bottom.
 
-## Insert wiki link
+## Insert wiki link (deprecated)
+
+**NOTE:** Noteplan implements this natively now, just start typing `[[` and it will provide an auto-complete search of your notes to generate wiki links directly.
 
 Keyword: `wl`
 
@@ -65,7 +82,9 @@ Past in a URL, like `https://noteplan.co`, and this workdlow action will create 
 
 I usually add a short note beneath the link, and add some relevant tags to make the note easier to retrieve later.
 
-## Insert hashtag
+## Insert hashtag (deprecated)
+
+**NOTE:** Noteplan implements this natively now, just start typing `#` and it will provide an auto-complete search of your hashtags to generate them directly.
 
 Keyword: `hashtag`
 
