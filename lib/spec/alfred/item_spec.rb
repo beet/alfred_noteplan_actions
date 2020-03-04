@@ -62,8 +62,17 @@ RSpec.describe Alfred::Item do
     context ":match" do
       let(:title) { "foo-bar" }
 
-      it 'is the title with non-word characters removed' do
-        expect(attributes[:match]).to eq("foo bar")
+      it 'defaults to the title' do
+        expect(attributes[:match]).to eq(title)
+      end
+
+      context "when provided in the options hash" do
+        let(:params) { { match: match } }
+        let(:match) { "match" }
+
+        it 'is the given match string' do
+          expect(attributes[:match]).to eq(match)
+        end
       end
     end
   end
