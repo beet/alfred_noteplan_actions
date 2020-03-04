@@ -10,7 +10,10 @@ module NotePlan
   class HashTags < Base
     def alfred_items
       tags.map do |tag|
-        Alfred::Item.new(tag)
+        Alfred::Item.new(
+          tag,
+          match: tag.gsub("#", "")
+        )
       end
     end
 
