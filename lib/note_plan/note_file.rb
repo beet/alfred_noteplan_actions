@@ -41,6 +41,14 @@ module NotePlan
       NoteComponents::HashTag.new(contents).contents
     end
 
+    def has_note_links?
+      note_links.any?
+    end
+
+    def note_links
+      @note_links ||= NoteComponents::NoteLinks.new(contents).contents
+    end
+
     def has_journal_entry?
       journal_entry != ""
     end
