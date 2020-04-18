@@ -18,13 +18,14 @@ So "foo-bar" will produce a match string of "foo bar"
 =end
 module Alfred
   class Item < Alfred::Base
-    attr_reader :title, :subtitle, :arg, :autocomplete
+    attr_reader :title, :subtitle, :arg, :autocomplete, :match
 
     def initialize(title, subtitle: nil, arg: nil, autocomplete: nil, match: nil)
       @title = title
       @subtitle = subtitle || title
       @arg = arg || title
       @autocomplete = autocomplete || title
+      @match = match || title
     end
 
     def attributes
@@ -35,18 +36,12 @@ module Alfred
         subtitle: subtitle, # optional
         arg: arg, # the returned value
         autocomplete: autocomplete, # the autocomplete value
-        match: match_string
+        match: match
         # "icon": {
         #     "type": "fileicon",
         #     "path": "~/Desktop"
         # }
       }
-    end
-
-    private
-
-    def match_string
-      title.gsub(/[^\w]/, " ").strip
     end
   end
 end

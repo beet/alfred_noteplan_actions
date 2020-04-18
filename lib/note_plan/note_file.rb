@@ -2,7 +2,7 @@
 
 PORO to encapsulate a note file:
 
-    note_file = NotePlan::NoteFile.new(filename)
+    note_file = NotePlan::NoteFile.for(filename)
 
     note_file.contents
     => <#String>
@@ -19,56 +19,16 @@ PORO to encapsulate a note file:
 =end
 module NotePlan
   class NoteFile
-    attr_reader :filename
-
-    def initialize(filename)
-      @filename = filename
-    end
-
-    def contents
-      @contents ||= File.read(filename)
-    end
-
-    def basename
-      File.basename(filename)
-    end
-
-    def heading
-      NoteComponents::Heading.new(contents).contents
-    end
-
-    def hashtags
-      NoteComponents::HashTag.new(contents).contents
-    end
-
-    def has_journal_entry?
-      journal_entry != ""
-    end
-
-    def journal_entry
-      @journal_entry ||= NoteComponents::JournalEntry.new(contents).contents
-    end
-
-    def date
-      note_date.date
-    end
-
-    def year
-      note_date.year
-    end
-
-    def month
-      note_date.month
-    end
-
-    def day
-      note_date.day
-    end
-
-    private
-
-    def note_date
-      @note_date ||= NoteComponents::NoteDate.new(basename)
+    class << self
+      # See NotePlan::Base#notes_directory and
+      # NotePlan::Base#calendar_directory. A filename like
+      # "/Users/foo/Library/Mobile
+      # Documents/iCloud~co~noteplan~NotePlan/Documents/Calendar/20200303.txt"
+      # will evaluate to NotePlan::NoteFiles::Calendar, and for text notes to
+      # NotePlan::NoteFiles::Notes
+      def for(filename)
+        module_eval("NotePlan::NoteFiles::#{File.basename(File.dirname(filename))}").new(filename)
+      end
     end
   end
 end

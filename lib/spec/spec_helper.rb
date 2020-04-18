@@ -100,4 +100,5 @@ RSpec.configure do |config|
 
   require_relative "../alfred"
   require_relative "../note_plan"
+  Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 end
