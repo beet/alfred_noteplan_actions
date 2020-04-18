@@ -37,4 +37,28 @@ RSpec.describe NotePlan::NoteComponents::NoteDate do
       expect(note_date.day).to eq(22)
     end
   end
+
+  context "#date_formatted" do
+    let(:date) { Date.today }
+
+    before do
+      allow(note_date).to receive(:date).and_return(date)
+    end
+
+    it 'is the date in YYYY-MM-DD format' do
+      expect(note_date.date_formatted).to eq(date.strftime("%Y-%m-%d"))
+    end
+  end
+
+  context "#date_human" do
+    let(:date) { Date.today }
+
+    before do
+      allow(note_date).to receive(:date).and_return(date)
+    end
+
+    it 'is the date in "Wednesday March 4 2020" format' do
+      expect(note_date.date_human).to eq(date.strftime("%A %B %-d %Y"))
+    end
+  end
 end

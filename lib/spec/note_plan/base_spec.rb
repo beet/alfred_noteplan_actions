@@ -80,7 +80,7 @@ RSpec.describe NotePlan::Base do
     before do
       allow(Dir).to receive(:glob).with(notes_directory).and_yield(filename)
 
-      allow(NotePlan::NoteFile).to receive(:new).with(filename).and_return(note_file)
+      allow(NotePlan::NoteFile).to receive(:for).with(filename).and_return(note_file)
     end
 
     it 'yields a NotePlan::NoteFile object instantiated with each filename in the text notes directory' do
@@ -96,7 +96,7 @@ RSpec.describe NotePlan::Base do
     before do
       allow(Dir).to receive(:glob).with(notes_directory).and_yield(filename)
 
-      allow(NotePlan::NoteFile).to receive(:new).with(filename).and_return(note_file)
+      allow(NotePlan::NoteFile).to receive(:for).with(filename).and_return(note_file)
     end
 
     it 'yields a NotePlan::NoteFile object instantiated with each filename in the calendar notes directory' do
