@@ -1,5 +1,11 @@
 # Versions
 
+## 0.7.0
+
+Quick open calendar notes
+
+* NEW: #14 - Quick open calendar notes with fuzzy matching of date queries
+
 ## 0.6.0
 
 Quick open fix, Dropbox support
