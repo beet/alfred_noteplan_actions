@@ -763,17 +763,17 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 	</dict>
 	<key>variables</key>
 	<dict>
+		<key>base_directory</key>
+		<string>/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents</string>
 		<key>journal_heading</key>
 		<string>## Journal</string>
 		<key>quick_add_mode</key>
 		<string>prepend</string>
 		<key>todo_string</key>
 		<string>- [ ]</string>
-		<key>base_directory</key>
-		<string>/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents</string>
 	</dict>
 	<key>version</key>
-	<string>0.6.0</string>
+	<string>0.7.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/beet/alfred_noteplan_actions</string>
 </dict>
