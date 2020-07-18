@@ -1,14 +1,12 @@
-=begin
-
-Template class for interacting with NotePlan files.
-
-Concrete classes must implement a #alfred_items abstract method that returns
-an array of Alfred::Item instances.
-
-Provides the #for_each_note block method that iterates through all NotePlan
-note files and yields a NotePlan::NoteFile instance.
-
-=end
+#
+# Template class for interacting with NotePlan files.
+#
+# Concrete classes must implement a #alfred_items abstract method that returns
+# an array of Alfred::Item instances.
+#
+# Provides the #for_each_note block method that iterates through all NotePlan
+# note files and yields a NotePlan::NoteFile instance.
+#
 module NotePlan
   class Base
     attr_reader :alfred_script_filter
@@ -25,13 +23,14 @@ module NotePlan
 
     private
 
-    def for_each_note(&block)
-      Dir.glob("#{notes_directory}/*.txt") do |filename|
+    def for_each_note
+      # Include sub-folders for notes, except those sub-directories starting with '@'
+      Dir.glob("#{notes_directory}/{[!@]**/*,*}.txt") do |filename|
         yield NotePlan::NoteFile.for(filename)
       end
     end
 
-    def for_each_calendar_entry(&block)
+    def for_each_calendar_entry
       Dir.glob("#{calendar_directory}/*.txt") do |filename|
         yield NotePlan::NoteFile.for(filename)
       end
@@ -46,7 +45,7 @@ module NotePlan
     end
 
     def base_directory
-      "#{ENV["HOME"]}#{Alfred::Settings.base_directory}"
+      "#{ENV['HOME']}#{Alfred::Settings.base_directory}"
     end
   end
 end
