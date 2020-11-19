@@ -184,32 +184,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>require "./lib/note_plan"
-require "./lib/alfred"
-
-print Alfred::Actions::OpenNote.new(ARGV[0]).process</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>2</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -258,6 +232,32 @@ print NotePlan::QuickOpen.new.json</string>
 			<string>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>require "./lib/note_plan"
+require "./lib/alfred"
+
+print Alfred::Actions::OpenNote.new(ARGV[0]).process</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F387E1CB-87F3-4944-A1D3-42385BD31CBC</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -409,6 +409,8 @@ print "[[#{query}]]"</string>
 				<true/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -478,6 +480,8 @@ print NotePlan::HashTags.new.json</string>
 				<true/>
 				<key>clipboardtext</key>
 				<string>{query} </string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -764,7 +768,9 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 	<key>variables</key>
 	<dict>
 		<key>base_directory</key>
-		<string>/Library/Mobile Documents/iCloud~co~noteplan~NotePlan/Documents</string>
+		<string>/Library/Containers/co.noteplan.NotePlan3/Data/Library/Application Support/co.noteplan.NotePlan3</string>
+		<key>file_extension</key>
+		<string>md</string>
 		<key>journal_heading</key>
 		<string>## Journal</string>
 		<key>quick_add_mode</key>
