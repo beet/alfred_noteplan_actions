@@ -27,7 +27,7 @@ module NotePlan
       # will evaluate to NotePlan::NoteFiles::Calendar, and for text notes to
       # NotePlan::NoteFiles::Notes
       def for(filename)
-        module_eval("NotePlan::NoteFiles::#{File.basename(File.dirname(filename))}").new(filename)
+        File.basename(File.dirname(filename)) == "Calendar" ? NotePlan::NoteFiles::Calendar.new(filename) : NotePlan::NoteFiles::Notes.new(filename)
       end
     end
   end

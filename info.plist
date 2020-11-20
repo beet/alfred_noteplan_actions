@@ -779,7 +779,7 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 		<string>- [ ]</string>
 	</dict>
 	<key>version</key>
-	<string>0.8.0</string>
+	<string>0.9.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/beet/alfred_noteplan_actions</string>
 </dict>

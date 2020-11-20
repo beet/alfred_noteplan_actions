@@ -79,7 +79,7 @@ RSpec.describe NotePlan::Base do
   end
 
   context "text note iteration" do
-    let(:notes_directory) { "#{ENV["HOME"]}#{base_directory}/Notes/*.#{file_extension}" }
+    let(:notes_directory) { "#{ENV["HOME"]}#{base_directory}/Notes/**/*.#{file_extension}" }
     let(:note_file) { double(NotePlan::NoteFile, filename: filename) }
     let(:filename) { "filename" }
 

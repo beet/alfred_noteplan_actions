@@ -18,6 +18,15 @@ RSpec.describe NotePlan::NoteFile do
       it 'is a NotePlan::NoteFiles::Notes instance' do
         expect(note_file).to be_a(NotePlan::NoteFiles::Notes)
       end
+
+      context "that is in a sub-folder" do
+        let(:filename) { "/Users/foo/Library/Containers/co.noteplan.NotePlan3/Data/Library/Application Support/co.noteplan.NotePlan3/Notes/@Trash/Title.md" }
+
+
+        it 'is a NotePlan::NoteFiles::Notes instance' do
+          expect(note_file).to be_a(NotePlan::NoteFiles::Notes)
+        end
+      end
     end
   end
 end
