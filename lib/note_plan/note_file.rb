@@ -26,8 +26,10 @@ module NotePlan
       # Documents/iCloud~co~noteplan~NotePlan/Documents/Calendar/20200303.txt"
       # will evaluate to NotePlan::NoteFiles::Calendar, and for text notes to
       # NotePlan::NoteFiles::Notes
-      def for(filename)
-        File.basename(File.dirname(filename)) == "Calendar" ? NotePlan::NoteFiles::Calendar.new(filename) : NotePlan::NoteFiles::Notes.new(filename)
+      def for(filename, base_directory:)
+        return NotePlan::NoteFiles::Calendar.new(filename, base_directory: base_directory) if File.basename(File.dirname(filename)) == "Calendar"
+
+        NotePlan::NoteFiles::Notes.new(filename, base_directory: base_directory)
       end
     end
   end

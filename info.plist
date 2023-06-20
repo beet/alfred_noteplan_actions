@@ -21,6 +21,32 @@
 				<false/>
 			</dict>
 		</array>
+		<key>133E36AE-E166-477E-A2E0-3A990ED8DC47</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>76EA634F-98D5-4B8C-A872-E2A73D21CD2C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>37573988-5625-4631-81DE-735574313340</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>382FC0F4-A650-4ED8-B22E-A9370464F9D8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>467968E3-37CE-4D02-A237-0FA82B846134</key>
 		<array>
 			<dict>
@@ -47,11 +73,37 @@
 				<false/>
 			</dict>
 		</array>
+		<key>6260EAD1-1ECD-48BA-8E20-B1BA4905F958</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C755D7CA-76D8-4245-A5E5-3DA05319CB75</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>6F16FCDA-E554-405A-B2CD-55812DF85DF3</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>AF430BBF-1499-45A3-807C-D5679E3B11C1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>76EA634F-98D5-4B8C-A872-E2A73D21CD2C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>37573988-5625-4631-81DE-735574313340</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -165,25 +217,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>0D429F71-F409-4444-BFD9-4FB61179F851</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -262,6 +295,102 @@ print Alfred::Actions::OpenNote.new(ARGV[0]).process</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>0D429F71-F409-4444-BFD9-4FB61179F851</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>nb</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>require "./lib/alfred"
+require "./lib/note_plan"
+
+print NotePlan::RevealInFinder.new.json</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Pass a note into Alfred's full array of awesomeness!</string>
+				<key>title</key>
+				<string>Browse NotePlan note in Alfred</string>
+				<key>type</key>
+				<integer>2</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>6260EAD1-1ECD-48BA-8E20-B1BA4905F958</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>path</key>
+				<string></string>
+				<key>sortBy</key>
+				<integer>0</integer>
+				<key>sortDirection</key>
+				<integer>0</integer>
+				<key>sortFoldersAtTop</key>
+				<false/>
+				<key>sortOverride</key>
+				<false/>
+				<key>stackBrowserView</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>C755D7CA-76D8-4245-A5E5-3DA05319CB75</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -277,6 +406,27 @@ print Alfred::Actions::OpenNote.new(ARGV[0]).process</string>
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>9737A391-0C8F-48BC-9D7F-9D804112585F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>E574BFD8-2AA9-4FC4-8708-9C932079C9A4</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -305,25 +455,6 @@ print Alfred::Actions::AddTodo.new(ARGV[0]).process</string>
 			<string>98AA0FEB-B8FB-4411-A2B9-35ECC369F092</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>E574BFD8-2AA9-4FC4-8708-9C932079C9A4</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -424,6 +555,25 @@ print "[[#{query}]]"</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query} </string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -476,25 +626,6 @@ print NotePlan::HashTags.new.json</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<true/>
-				<key>clipboardtext</key>
-				<string>{query} </string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -517,6 +648,27 @@ print Alfred::Actions::AddLinkNote.new(ARGV[0]).process</string>
 			<string>6F16FCDA-E554-405A-B2CD-55812DF85DF3</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>AF430BBF-1499-45A3-807C-D5679E3B11C1</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -544,36 +696,40 @@ print Alfred::Actions::AddLinkNote.new(ARGV[0]).process</string>
 			<dict>
 				<key>browser</key>
 				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
+				<string></string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>AF430BBF-1499-45A3-807C-D5679E3B11C1</string>
+			<string>CE3686D4-750F-45EA-87C7-053E69F86755</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>js</string>
+				<key>subtext</key>
 				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string></string>
-				<key>utf8</key>
-				<true/>
+				<key>text</key>
+				<string>Journal Summary</string>
+				<key>withspace</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>CE3686D4-750F-45EA-87C7-053E69F86755</string>
+			<string>DAC024F8-5725-4685-A81C-3126018F8FFF</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -606,21 +762,80 @@ print Alfred::Actions::CreateJournalSummary.process</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>js</string>
-				<key>subtext</key>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>time_block_text = '{query}'
+
+print "#{time_block_text} #{Time.now.strftime('%l:%M%P')}"
+  .gsub('  ', ' ')
+  # .gsub(/(.*)([\d]+):([\d]{2})([\w]+)/, "#{$1}#{$2}:#{($3.to_i / 10.0).floor * 10}#{$4}")</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
 				<string></string>
-				<key>text</key>
-				<string>Journal Summary</string>
-				<key>withspace</key>
+				<key>type</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>37573988-5625-4631-81DE-735574313340</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>keyword</key>
+				<string>tb`</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.snippet</string>
+			<key>uid</key>
+			<string>133E36AE-E166-477E-A2E0-3A990ED8DC47</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
 				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
+			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
-			<string>DAC024F8-5725-4685-A81C-3126018F8FFF</string>
+			<string>382FC0F4-A650-4ED8-B22E-A9370464F9D8</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{var:time_block_text}</string>
+				<key>passthroughargument</key>
+				<false/>
+				<key>variables</key>
+				<dict/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>76EA634F-98D5-4B8C-A872-E2A73D21CD2C</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -636,135 +851,183 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 		<key>0C5FD526-22A5-44DB-9C94-66665CE4CB1E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>260</integer>
+			<real>260</real>
 			<key>ypos</key>
-			<integer>990</integer>
+			<real>990</real>
 		</dict>
 		<key>0D429F71-F409-4444-BFD9-4FB61179F851</key>
 		<dict>
 			<key>xpos</key>
-			<integer>470</integer>
+			<real>470</real>
 			<key>ypos</key>
-			<integer>30</integer>
+			<real>30</real>
+		</dict>
+		<key>133E36AE-E166-477E-A2E0-3A990ED8DC47</key>
+		<dict>
+			<key>note</key>
+			<string>Insert a timeblock string</string>
+			<key>xpos</key>
+			<real>40</real>
+			<key>ypos</key>
+			<real>1270</real>
+		</dict>
+		<key>37573988-5625-4631-81DE-735574313340</key>
+		<dict>
+			<key>xpos</key>
+			<real>310</real>
+			<key>ypos</key>
+			<real>1270</real>
+		</dict>
+		<key>382FC0F4-A650-4ED8-B22E-A9370464F9D8</key>
+		<dict>
+			<key>xpos</key>
+			<real>495</real>
+			<key>ypos</key>
+			<real>1270</real>
 		</dict>
 		<key>467968E3-37CE-4D02-A237-0FA82B846134</key>
 		<dict>
 			<key>note</key>
 			<string>Paste a URL, and a new text note will be created using the website's title for the heading with a link to the site and the #links hashtag.</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<real>40</real>
 			<key>ypos</key>
-			<integer>760</integer>
+			<real>760</real>
 		</dict>
 		<key>565CEEFB-4C22-4E01-B1E4-721F43BC4276</key>
 		<dict>
 			<key>note</key>
 			<string>Insert a hashtag from the existing hashtags in your text notes with fuzzy search</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<real>40</real>
 			<key>ypos</key>
-			<integer>570</integer>
+			<real>570</real>
+		</dict>
+		<key>6260EAD1-1ECD-48BA-8E20-B1BA4905F958</key>
+		<dict>
+			<key>note</key>
+			<string>Browse notes in Alfred</string>
+			<key>xpos</key>
+			<real>650</real>
+			<key>ypos</key>
+			<real>35</real>
 		</dict>
 		<key>6F16FCDA-E554-405A-B2CD-55812DF85DF3</key>
 		<dict>
 			<key>xpos</key>
-			<integer>260</integer>
+			<real>260</real>
 			<key>ypos</key>
-			<integer>760</integer>
+			<real>760</real>
+		</dict>
+		<key>76EA634F-98D5-4B8C-A872-E2A73D21CD2C</key>
+		<dict>
+			<key>xpos</key>
+			<real>215</real>
+			<key>ypos</key>
+			<real>1300</real>
 		</dict>
 		<key>793F4654-386B-4CE2-B264-E21D3CF2C657</key>
 		<dict>
 			<key>xpos</key>
-			<integer>480</integer>
+			<real>480</real>
 			<key>ypos</key>
-			<integer>390</integer>
+			<real>390</real>
 		</dict>
 		<key>9737A391-0C8F-48BC-9D7F-9D804112585F</key>
 		<dict>
 			<key>note</key>
 			<string>Quick capture of todos from anywhere. Will be appended to today's calendar note.</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<real>40</real>
 			<key>ypos</key>
-			<integer>200</integer>
+			<real>200</real>
 		</dict>
 		<key>98AA0FEB-B8FB-4411-A2B9-35ECC369F092</key>
 		<dict>
 			<key>xpos</key>
-			<integer>255</integer>
+			<real>255</real>
 			<key>ypos</key>
-			<integer>200</integer>
+			<real>200</real>
 		</dict>
 		<key>AF430BBF-1499-45A3-807C-D5679E3B11C1</key>
 		<dict>
 			<key>xpos</key>
-			<integer>490</integer>
+			<real>490</real>
 			<key>ypos</key>
-			<integer>760</integer>
+			<real>760</real>
 		</dict>
 		<key>BD9E31D7-F171-4174-B726-A44C2DAE83EC</key>
 		<dict>
 			<key>note</key>
 			<string>Insert a wiki link to any text note with fuzzy search by heading</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<real>40</real>
 			<key>ypos</key>
-			<integer>390</integer>
+			<real>390</real>
 		</dict>
 		<key>BE6DBA4B-0837-4736-8502-FFD1DCEEC1A6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>260</integer>
+			<real>260</real>
 			<key>ypos</key>
-			<integer>570</integer>
+			<real>570</real>
+		</dict>
+		<key>C755D7CA-76D8-4245-A5E5-3DA05319CB75</key>
+		<dict>
+			<key>xpos</key>
+			<real>865</real>
+			<key>ypos</key>
+			<real>35</real>
 		</dict>
 		<key>CE3686D4-750F-45EA-87C7-053E69F86755</key>
 		<dict>
 			<key>xpos</key>
-			<integer>485</integer>
+			<real>485</real>
 			<key>ypos</key>
-			<integer>990</integer>
+			<real>990</real>
 		</dict>
 		<key>D54E0D31-4AEA-4F75-BC66-86EB9C59E88E</key>
 		<dict>
 			<key>note</key>
 			<string>Open any text note from anywhere by searching by heading</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<real>40</real>
 			<key>ypos</key>
-			<integer>30</integer>
+			<real>30</real>
 		</dict>
 		<key>DAC024F8-5725-4685-A81C-3126018F8FFF</key>
 		<dict>
 			<key>note</key>
 			<string>Produces a Markdown summary of journal entries extracted from NotePlan's calendar notes</string>
 			<key>xpos</key>
-			<integer>40</integer>
+			<real>40</real>
 			<key>ypos</key>
-			<integer>990</integer>
+			<real>990</real>
 		</dict>
 		<key>E574BFD8-2AA9-4FC4-8708-9C932079C9A4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>480</integer>
+			<real>480</real>
 			<key>ypos</key>
-			<integer>200</integer>
+			<real>200</real>
 		</dict>
 		<key>EB82F64E-90B1-4F50-8A6A-F5AF6DBEEAF1</key>
 		<dict>
 			<key>xpos</key>
-			<integer>260</integer>
+			<real>260</real>
 			<key>ypos</key>
-			<integer>390</integer>
+			<real>390</real>
 		</dict>
 		<key>F387E1CB-87F3-4944-A1D3-42385BD31CBC</key>
 		<dict>
 			<key>xpos</key>
-			<integer>250</integer>
+			<real>250</real>
 			<key>ypos</key>
-			<integer>30</integer>
+			<real>30</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>variables</key>
 	<dict>
 		<key>base_directory</key>
@@ -775,9 +1038,20 @@ See https://github.com/beet/alfred_noteplan_actions for a deatailed readme.</str
 		<string>## Journal</string>
 		<key>quick_add_mode</key>
 		<string>prepend</string>
+		<key>time_block_text</key>
+		<string>⏱️</string>
 		<key>todo_string</key>
 		<string>- [ ]</string>
 	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>todo_string</string>
+		<string>file_extension</string>
+		<string>base_directory</string>
+		<string>journal_heading</string>
+		<string>quick_add_mode</string>
+		<string>time_block_text</string>
+	</array>
 	<key>version</key>
 	<string>0.9.0</string>
 	<key>webaddress</key>

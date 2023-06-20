@@ -80,13 +80,20 @@ RSpec.describe NotePlan::Base do
 
   context "text note iteration" do
     let(:notes_directory) { "#{ENV["HOME"]}#{base_directory}/Notes/**/*.#{file_extension}" }
-    let(:note_file) { double(NotePlan::NoteFile, filename: filename) }
+    let(:notes_base_directory) { "#{ENV["HOME"]}#{base_directory}/Notes" }
+    let(:note_file) {
+      instance_double(
+        NotePlan::NoteFiles::Notes,
+        filename: filename,
+        base_directory: notes_base_directory,
+      )
+    }
     let(:filename) { "filename" }
 
     before do
       allow(Dir).to receive(:glob).with(notes_directory).and_yield(filename)
 
-      allow(NotePlan::NoteFile).to receive(:for).with(filename).and_return(note_file)
+      allow(NotePlan::NoteFile).to receive(:for).with(filename, base_directory: notes_base_directory).and_return(note_file)
     end
 
     it 'yields a NotePlan::NoteFile object instantiated with each filename in the text notes directory' do
@@ -96,13 +103,20 @@ RSpec.describe NotePlan::Base do
 
   context "calendar note iteration" do
     let(:notes_directory) { "#{ENV["HOME"]}#{base_directory}/Calendar/*.#{file_extension}" }
-    let(:note_file) { double(NotePlan::NoteFile, filename: filename) }
+    let(:calendar_base_directory) { "#{ENV["HOME"]}#{base_directory}/Calendar" }
+    let(:note_file) {
+      instance_double(
+        NotePlan::NoteFiles::Calendar,
+        filename: filename,
+        base_directory: calendar_base_directory,
+      )
+    }
     let(:filename) { "filename" }
 
     before do
       allow(Dir).to receive(:glob).with(notes_directory).and_yield(filename)
 
-      allow(NotePlan::NoteFile).to receive(:for).with(filename).and_return(note_file)
+      allow(NotePlan::NoteFile).to receive(:for).with(filename, base_directory: calendar_base_directory).and_return(note_file)
     end
 
     it 'yields a NotePlan::NoteFile object instantiated with each filename in the calendar notes directory' do
