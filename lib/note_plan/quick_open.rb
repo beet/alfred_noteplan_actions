@@ -28,7 +28,7 @@ module NotePlan
       Alfred::Item.new(
         note_file.heading,
         subtitle: note_file.basename,
-        arg: note_file.heading
+        arg: note_file.relative_path,
       )
     end
   end

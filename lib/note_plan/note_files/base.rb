@@ -20,10 +20,13 @@ PORO to encapsulate a note file:
 module NotePlan
   module NoteFiles
     class Base
-      attr_reader :filename
+      class AbstractMethodError < StandardError; end
 
-      def initialize(filename)
+      attr_reader :filename, :base_directory
+
+      def initialize(filename, base_directory:)
         @filename = filename
+        @base_directory = base_directory
       end
 
       def contents
@@ -34,15 +37,25 @@ module NotePlan
         File.basename(filename)
       end
 
-      def heading; end
+      def relative_path
+        filename.gsub(/^#{base_directory}\//, '')
+      end
+
+      def heading
+        raise AbstractMethodError, 'concrete implementations must define the #heading abstract method'
+      end
 
       def hashtags
         NoteComponents::HashTag.new(contents).contents
       end
 
-      def has_journal_entry?; end
+      def has_journal_entry?
+        raise AbstractMethodError, 'concrete implementations must define the #has_journal_entry? abstract method'
+      end
 
-      def journal_entry; end
+      def journal_entry
+        raise AbstractMethodError, 'concrete implementations must define the #journal_entry abstract method'
+      end
 
       def date
         note_date.date

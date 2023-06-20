@@ -10,7 +10,7 @@ module NotePlan
     class OpenNote < Base
       def parameters
         {
-          noteTitle: input
+          filename: input
         }
       end
     end

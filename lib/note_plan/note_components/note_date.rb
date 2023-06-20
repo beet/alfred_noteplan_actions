@@ -35,27 +35,60 @@ module NotePlan
       end
 
       def date_formatted
-        date.strftime("%Y-%m-%d")
+        return date.strftime("%Y-%m-%d") if daily?
+        return "Week #{weekly_week}" if weekly?
+        return date.strftime('%B') if monthly?
+        return yearly_year if yearly?
       end
 
       def date_human
-        date.strftime("%A %B %-d %Y")
+        return date.strftime("%A %B %-d %Y") if daily?
+        return daily_year if weekly?
+        return daily_year if monthly?
+        return 'yearly' if yearly?
+      end
+
+      private
+
+      def daily?
+        /^[\d]{8}\./.match?(filename)
+      end
+
+      def weekly?
+        /^[\d]{4}-W[\d]{2}\./.match?(filename)
+      end
+
+      def monthly?
+        /^[\d]{4}-[\d]{2}\./.match?(filename)
+      end
+
+      def yearly?
+        /^[\d]{4}\./.match?(filename)
       end
 
       def date
-        Date.new(year, month, day)
+        Date.new(daily_year, daily_month, daily_day || 1)
       end
 
-      def year
-        filename.match(/^([\d]{4})/)[0].to_i
+      def daily_year
+        filename.match(/^([\d]{4})/)[0]&.to_i
       end
 
-      def month
-        filename.match(/^[\d]{4}([\d]{2})/)[1].to_i
+      def daily_month
+        filename.match(/^[\d]{4}-([\d]{2})\./)&.[](1)&.to_i ||
+          filename.match(/^[\d]{4}([\d]{2})/)[1]&.to_i
       end
 
-      def day
-        filename.match(/^[\d]{4}[\d]{2}([\d]{2})/)[1].to_i
+      def daily_day
+        filename.match(/^[\d]{4}[\d]{2}([\d]{2})/)&.[](1)&.to_i
+      end
+
+      def weekly_week
+        filename.match(/^[\d]{4}-W([\d]{2})\./)[1]
+      end
+
+      def yearly_year
+        filename.match(/^([\d]{4})\./)[1]
       end
     end
   end

@@ -5,60 +5,71 @@ RSpec.describe NotePlan::NoteComponents::NoteDate do
 
   subject(:note_date) { NotePlan::NoteComponents::NoteDate.new(filename) }
 
-  context "#date" do
-    let(:year) { 2019 }
-    let(:month) { 8 }
-    let(:day) { 22 }
-    let(:date) { double(Date) }
+  describe "#date_formatted" do
+    context 'for daily notes' do
+      let(:filename) { '20230619.md' }
 
-    before do
-      allow(Date).to receive(:new).with(year, month, day).and_return(date)
+      it 'is the date in YYYY-MM-DD format' do
+        expect(subject.date_formatted).to eq('2023-06-19')
+      end
     end
 
-    it 'constructs a date from the year, month, and day' do
-      expect(note_date.date).to eq(date)
-    end
-  end
+    context 'for weekly notes' do
+      let(:filename) { '2023-W01.md' }
 
-  context "#year" do
-    it 'extracts the year from the filename' do
-      expect(note_date.year).to eq(2019)
-    end
-  end
-
-  context "#month" do
-    it 'extracts the month from the filename' do
-      expect(note_date.month).to eq(8)
-    end
-  end
-
-  context "#day" do
-    it 'extracts the day from the filename' do
-      expect(note_date.day).to eq(22)
-    end
-  end
-
-  context "#date_formatted" do
-    let(:date) { Date.today }
-
-    before do
-      allow(note_date).to receive(:date).and_return(date)
+      it 'is the formatted week number' do
+        expect(subject.date_formatted).to eq('Week 01')
+      end
     end
 
-    it 'is the date in YYYY-MM-DD format' do
-      expect(note_date.date_formatted).to eq(date.strftime("%Y-%m-%d"))
+    context 'for monthly notes' do
+      let(:filename) { '2023-01.md' }
+
+      it 'is the formatted month name' do
+        expect(subject.date_formatted).to eq('January')
+      end
+    end
+
+    context 'for yearly notes' do
+      let(:filename) { '2023.md' }
+
+      it 'is the year' do
+        expect(subject.date_formatted).to eq('2023')
+      end
     end
   end
 
   context "#date_human" do
-    let(:date) { Date.today }
+    context 'for daily notes' do
+      let(:filename) { '20230619.md' }
 
-    before do
-      allow(note_date).to receive(:date).and_return(date)
+      it 'is the date in "Wednesday March 4 2020" format' do
+        expect(note_date.date_human).to eq('Monday June 19 2023')
+      end
     end
 
-    it 'is the date in "Wednesday March 4 2020" format' do
-      expect(note_date.date_human).to eq(date.strftime("%A %B %-d %Y"))
+    context 'for weekly notes' do
+      let(:filename) { '2023-W01.md' }
+
+      it 'is the year' do
+        expect(subject.date_human).to eq(2023)
+      end
+    end
+
+    context 'for monthly notes' do
+      let(:filename) { '2023-01.md' }
+
+      it 'is the year' do
+        expect(subject.date_human).to eq(2023)
+      end
+    end
+
+    context 'for yearly notes' do
+      let(:filename) { '2023.md' }
+
+      it 'is "yearly"' do
+        expect(subject.date_human).to eq('yearly')
+      end
     end
   end
 end

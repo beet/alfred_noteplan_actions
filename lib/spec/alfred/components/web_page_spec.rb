@@ -35,5 +35,35 @@ RSpec.describe Alfred::Components::WebPage do
         expect(web_page.title).to eq("Vegetable Latkes | Mark's Daily Apple")
       end
     end
+
+    context "when there is no <title> element" do
+      let(:html) { "<!DOCTYPE html><html><head></head><body><h1>Heading</h1><p>Contents</p></body></html>" }
+
+      it 'is blank' do
+        expect(subject.title).to eq(nil)
+      end
+
+      context 'but there is an Open Graph title element' do
+        let(:html) {
+          <<~HTML
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <meta property="og:title" content="#{title}">
+              </head>
+              <body>
+                <h1>Heading</h1>
+
+                <p>Contents</p>
+              </body>
+            </html>
+          HTML
+        }
+
+        it 'is the metadata contents' do
+          expect(subject.title).to eq(title)
+        end
+      end
+    end
   end
 end
