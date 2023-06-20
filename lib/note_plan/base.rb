@@ -27,13 +27,19 @@ module NotePlan
 
     def for_each_note(&block)
       Dir.glob("#{notes_directory}/**/*.#{Alfred::Settings.file_extension}") do |filename|
-        yield NotePlan::NoteFile.for(filename)
+        yield NotePlan::NoteFile.for(
+          filename,
+          base_directory: notes_directory,
+        )
       end
     end
 
     def for_each_calendar_entry(&block)
       Dir.glob("#{calendar_directory}/*.#{Alfred::Settings.file_extension}") do |filename|
-        yield NotePlan::NoteFile.for(filename)
+        yield NotePlan::NoteFile.for(
+          filename,
+          base_directory: calendar_directory,
+        )
       end
     end
 

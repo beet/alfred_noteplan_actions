@@ -21,17 +21,21 @@ module Alfred
       end
 
       def title
-        @title ||= unescaped_title_contents
+        title_string = title_contents || open_graph_title
+
+        return if title_string.nil?
+
+        @title ||= CGI.unescapeHTML(title_string)
       end
 
       private
 
-      def unescaped_title_contents
-        CGI.unescapeHTML(title_contents)
-      end
-
       def title_contents
         html.scan(/<title[^>]*>(.*?)<\/title>/).flatten.first
+      end
+
+      def open_graph_title
+        html.scan(/<meta property="og:title" content="(.*)"( \/)?>/).flatten.first
       end
 
       def html

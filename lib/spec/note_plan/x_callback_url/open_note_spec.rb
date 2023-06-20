@@ -14,9 +14,9 @@ RSpec.describe NotePlan::XCallbackUrl::OpenNote do
   context "#parameters" do
     let(:parameters) { callback.parameters }
 
-    context ":noteTitle" do
+    context ":filename" do
       it 'is the given input' do
-        expect(parameters[:noteTitle]).to eq(input)
+        expect(parameters[:filename]).to eq(input)
       end
     end
   end

@@ -1,7 +1,8 @@
 RSpec.describe NotePlan::NoteFiles::Notes do
   let(:filename) { "foo/filename.txt" }
+  let(:base_directory) { 'foo/Bar' }
 
-  subject(:note_file) { NotePlan::NoteFiles::Notes.new(filename) }
+  subject(:note_file) { described_class.new(filename, base_directory: base_directory) }
 
   it_behaves_like NotePlan::NoteFiles::Base
 
